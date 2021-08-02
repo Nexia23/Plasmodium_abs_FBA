@@ -1,0 +1,170 @@
+# Antimony code for ode system of phospholipid synthesis
+ #molecules in absolute numbers, units are M, second, litre
+
+ # Definition of time variable
+t := Time;
+
+# Unit definitions
+unit M = mole * liter^-1; 
+unit L = liter; 
+
+# Definition of compartment volume
+Vmax = 27;
+Vmin = 4;
+t12 = 97200;
+s = 7200;
+var compartment cytoplasm;
+cytoplasm := ((Vmax-Vmin)*1/(1+exp((t12-t)/s))+Vmin)*1e-5 L;
+compartment const_ext  = 30 * 1e-5 L
+
+# Enzyme initialisation
+cmax_E2_1_1_103 = 1;
+cmin_E2_1_1_103 = 1;
+t12_E2_1_1_103 = 1;
+s_E2_1_1_103 = 1;
+E2_1_1_103 := ((cmax_E2_1_1_103-cmin_E2_1_1_103)*1/(1+exp((t12_E2_1_1_103-t)/s_E2_1_1_103))+cmin_E2_1_1_103)*1 M;
+E2_1_1_103 in cytoplasm;
+cmax_EEtOHamine_in = 1;
+cmin_EEtOHamine_in = 1;
+t12_EEtOHamine_in = 1;
+s_EEtOHamine_in = 1;
+EEtOHamine_in := ((cmax_EEtOHamine_in-cmin_EEtOHamine_in)*1/(1+exp((t12_EEtOHamine_in-t)/s_EEtOHamine_in))+cmin_EEtOHamine_in)*1 M;
+EEtOHamine_in in cytoplasm;
+cmax_ECholine_in = 1;
+cmin_ECholine_in = 1;
+t12_ECholine_in = 1;
+s_ECholine_in = 1;
+ECholine_in := ((cmax_ECholine_in-cmin_ECholine_in)*1/(1+exp((t12_ECholine_in-t)/s_ECholine_in))+cmin_ECholine_in)*1 M;
+ECholine_in in cytoplasm;
+cmax_E2_7_1_82 = 1;
+cmin_E2_7_1_82 = 1;
+t12_E2_7_1_82 = 1;
+s_E2_7_1_82 = 1;
+E2_7_1_82 := ((cmax_E2_7_1_82-cmin_E2_7_1_82)*1/(1+exp((t12_E2_7_1_82-t)/s_E2_7_1_82))+cmin_E2_7_1_82)*1 M;
+E2_7_1_82 in cytoplasm;
+cmax_E2_7_1_32 = 1;
+cmin_E2_7_1_32 = 1;
+t12_E2_7_1_32 = 1;
+s_E2_7_1_32 = 1;
+E2_7_1_32 := ((cmax_E2_7_1_32-cmin_E2_7_1_32)*1/(1+exp((t12_E2_7_1_32-t)/s_E2_7_1_32))+cmin_E2_7_1_32)*1 M;
+E2_7_1_32 in cytoplasm;
+cmax_E2_7_7_14 = 1;
+cmin_E2_7_7_14 = 1;
+t12_E2_7_7_14 = 1;
+s_E2_7_7_14 = 1;
+E2_7_7_14 := ((cmax_E2_7_7_14-cmin_E2_7_7_14)*1/(1+exp((t12_E2_7_7_14-t)/s_E2_7_7_14))+cmin_E2_7_7_14)*1 M;
+E2_7_7_14 in cytoplasm;
+cmax_E2_7_7_15 = 1;
+cmin_E2_7_7_15 = 1;
+t12_E2_7_7_15 = 1;
+s_E2_7_7_15 = 1;
+E2_7_7_15 := ((cmax_E2_7_7_15-cmin_E2_7_7_15)*1/(1+exp((t12_E2_7_7_15-t)/s_E2_7_7_15))+cmin_E2_7_7_15)*1 M;
+E2_7_7_15 in cytoplasm;
+cmax_E2_7_8_1 = 1;
+cmin_E2_7_8_1 = 1;
+t12_E2_7_8_1 = 1;
+s_E2_7_8_1 = 1;
+E2_7_8_1 := ((cmax_E2_7_8_1-cmin_E2_7_8_1)*1/(1+exp((t12_E2_7_8_1-t)/s_E2_7_8_1))+cmin_E2_7_8_1)*1 M;
+E2_7_8_1 in cytoplasm;
+cmax_E2_7_8_2 = 1;
+cmin_E2_7_8_2 = 1;
+t12_E2_7_8_2 = 1;
+s_E2_7_8_2 = 1;
+E2_7_8_2 := ((cmax_E2_7_8_2-cmin_E2_7_8_2)*1/(1+exp((t12_E2_7_8_2-t)/s_E2_7_8_2))+cmin_E2_7_8_2)*1 M;
+E2_7_8_2 in cytoplasm;
+cmax_E3_1_4_3 = 1;
+cmin_E3_1_4_3 = 1;
+t12_E3_1_4_3 = 1;
+s_E3_1_4_3 = 1;
+E3_1_4_3 := ((cmax_E3_1_4_3-cmin_E3_1_4_3)*1/(1+exp((t12_E3_1_4_3-t)/s_E3_1_4_3))+cmin_E3_1_4_3)*1 M;
+E3_1_4_3 in cytoplasm;
+
+# Species initialisation
+# values used from Vo Duy et al.(Vo), for lipids from 
+# Alex, or Yurkovich, values for red blood cell(Yu)
+
+# (Yu)
+const S_Adenosyl_L_methionine = 2.0*1e-06 M;
+S_Adenosyl_L_methionine  in const_ext;
+# (Vo)
+Ethanolamine_phosphate = 1.99111111*1e-03 M;
+Ethanolamine_phosphate  in cytoplasm;
+# guess
+N_Methylethanolamine_phosphate = 3.0*1e-05 M;
+N_Methylethanolamine_phosphate  in cytoplasm;
+# guess
+Phosphodimethylethanolamine = 3.0*1e-05 M;
+Phosphodimethylethanolamine  in cytoplasm;
+# (Yu)
+S_Adenosyl_L_homocysteine = 4.0*1e-06 M;
+S_Adenosyl_L_homocysteine  in cytoplasm;
+
+# (Vo)
+const External_Ethanolamine = 7.77777778*1e-05 M;
+External_Ethanolamine  in const_ext;
+# (Vo uRBC)
+const External_Choline = 4.74444444*1e-05 M;
+External_Choline  in const_ext;
+# (Vo)
+Ethanolamine = 6.22222222*1e-05 M;
+Ethanolamine  in cytoplasm;
+# (Vo)
+Choline = 3.86666667*1e-04 M;
+Choline  in cytoplasm;
+# (Vo)
+Choline_phosphate = 2.28222222*1e-03 M;
+Choline_phosphate  in cytoplasm;
+# (Vo)
+CDP_ethanolamine = 2.37777778*1e-04 M;
+CDP_ethanolamine  in cytoplasm;
+# (Vo)
+CDP_choline = 1.49333333*1e-04 M;
+CDP_choline  in cytoplasm;
+
+# Alex values divided by V = 15.0 so that concentration as unit
+Phosphatidylcholine = 107.29/15.0*1e-3 M;
+Phosphatidylcholine  in cytoplasm;
+
+Phosphatidylethanolamine = 33.32/15.0*1e-3 M;
+Phosphatidylethanolamine  in cytoplasm;
+
+
+# Kinetic parameters initialisation
+km_S_Adenosyl_L_methionine_R02037 = 0.0299* 1e-3 M
+kcat_S_Adenosyl_L_methionine_R02037 = 0.392 second^-1
+km_Ethanolamine_phosphate_R02037 = 0.0542* 1e-3 M
+km_N_Methylethanolamine_phosphate_R06868 = 0.181* 1e-3 M
+kcat_N_Methylethanolamine_phosphate_R06868 = 3.63 second^-1
+km_S_Adenosyl_L_methionine_R06869 = 0.0331* 1e-3 M
+kcat_S_Adenosyl_L_methionine_R06869 = 0.487 second^-1
+km_Phosphodimethylethanolamine_R06869 = 0.0668* 1e-3 M
+km_Ethanolamine_R01468 = 0.071* 1e-3 M
+km_Ethanolamine_phosphate_R02038 = 0.373* 1e-3 M
+
+# vmax initialisation
+vmax_R02037 = E2_1_1_103 * kcat_S_Adenosyl_L_methionine_R02037
+k_R06868 = 1
+vmax_R06869 = E2_1_1_103 * kcat_S_Adenosyl_L_methionine_R06869
+k_EtOHamine_in = 1
+k_Choline_in = 1
+k_R01468 = 1
+k_R01021 = 1
+k_R02038 = 1
+k_R01890 = 1
+k_R02057 = 1
+k_R01321 = 1
+k_R01312 = 1
+k_R02052 = 1
+
+# Reactions initialisation
+R02037: S_Adenosyl_L_methionine + Ethanolamine_phosphate => S_Adenosyl_L_homocysteine + N_Methylethanolamine_phosphate; vmax_R02037 * S_Adenosyl_L_methionine / (km_S_Adenosyl_L_methionine_R02037 + S_Adenosyl_L_methionine) * Ethanolamine_phosphate / (km_Ethanolamine_phosphate_R02037 + Ethanolamine_phosphate) in cytoplasm;
+R06868: S_Adenosyl_L_methionine + N_Methylethanolamine_phosphate => S_Adenosyl_L_homocysteine + Phosphodimethylethanolamine; k_R06868 * E2_1_1_103 * S_Adenosyl_L_methionine * N_Methylethanolamine_phosphate in cytoplasm;
+R06869: S_Adenosyl_L_methionine + Phosphodimethylethanolamine => S_Adenosyl_L_homocysteine + Choline_phosphate; vmax_R06869 * S_Adenosyl_L_methionine / (km_S_Adenosyl_L_methionine_R06869 + S_Adenosyl_L_methionine) * Phosphodimethylethanolamine / (km_Phosphodimethylethanolamine_R06869 + Phosphodimethylethanolamine) in cytoplasm;
+EtOHamine_in: External_Ethanolamine => Ethanolamine; k_EtOHamine_in * EEtOHamine_in * External_Ethanolamine in cytoplasm;
+Choline_in: External_Choline => Choline; k_Choline_in * ECholine_in * External_Choline in cytoplasm;
+R01468: Ethanolamine => Ethanolamine_phosphate; k_R01468 * E2_7_1_82 * Ethanolamine in cytoplasm;
+R01021: Choline => Choline_phosphate; k_R01021 * E2_7_1_32 * Choline in cytoplasm;
+R02038: Ethanolamine_phosphate => CDP_ethanolamine; k_R02038 * E2_7_7_14 * Ethanolamine_phosphate in cytoplasm;
+R01890: Choline_phosphate => CDP_choline; k_R01890 * E2_7_7_15 * Choline_phosphate in cytoplasm;
+R02057: CDP_ethanolamine => Phosphatidylethanolamine; k_R02057 * E2_7_8_1 * CDP_ethanolamine in cytoplasm;
+R01321: CDP_choline => Phosphatidylcholine; k_R01321 * E2_7_8_2 * CDP_choline in cytoplasm;

@@ -1,0 +1,166 @@
+// Created by libAntimony v2.11.0
+// Compartments and Species:
+compartment cytoplasm, const_ext;
+species $S_Adenosyl_L_methionine in const_ext, Ethanolamine_phosphate in cytoplasm;
+species N_Methylethanolamine_phosphate in cytoplasm, Phosphodimethylethanolamine in cytoplasm;
+species S_Adenosyl_L_homocysteine in cytoplasm, $External_Ethanolamine in const_ext;
+species $External_Choline in const_ext, Ethanolamine in cytoplasm, Choline in cytoplasm;
+species Choline_phosphate in cytoplasm, CDP_ethanolamine in cytoplasm, CDP_choline in cytoplasm;
+species Phosphatidylcholine in cytoplasm, Phosphatidylethanolamine in cytoplasm;
+species Phosphatidylcholine_mem  in cytoplasm, Phosphatidylethanolamine_mem  in cytoplasm;
+// Assignment Rules:
+cytoplasm := ((Vmax - Vmin)*1/(1 + exp((t12 - t)/s)) + Vmin)*1e-5 L;
+t := time;
+E2_1_1_103 := ((cmax_E2_1_1_103 - cmin_E2_1_1_103)*1/(1 + exp((t12_E2_1_1_103 - t)/s_E2_1_1_103)) + cmin_E2_1_1_103)*1 M;
+EEtOHamine_in := ((cmax_EEtOHamine_in - cmin_EEtOHamine_in)*1/(1 + exp((t12_EEtOHamine_in - t)/s_EEtOHamine_in)) + cmin_EEtOHamine_in)*1 M;
+ECholine_in := ((cmax_ECholine_in - cmin_ECholine_in)*1/(1 + exp((t12_ECholine_in - t)/s_ECholine_in)) + cmin_ECholine_in)*1 M;
+E2_7_1_82 := ((cmax_E2_7_1_82 - cmin_E2_7_1_82)*1/(1 + exp((t12_E2_7_1_82 - t)/s_E2_7_1_82)) + cmin_E2_7_1_82)*1 M;
+E2_7_1_32 := ((cmax_E2_7_1_32 - cmin_E2_7_1_32)*1/(1 + exp((t12_E2_7_1_32 - t)/s_E2_7_1_32)) + cmin_E2_7_1_32)*1 M;
+E2_7_7_14 := ((cmax_E2_7_7_14 - cmin_E2_7_7_14)*1/(1 + exp((t12_E2_7_7_14 - t)/s_E2_7_7_14)) + cmin_E2_7_7_14)*1 M;
+E2_7_7_15 := ((cmax_E2_7_7_15 - cmin_E2_7_7_15)*1/(1 + exp((t12_E2_7_7_15 - t)/s_E2_7_7_15)) + cmin_E2_7_7_15)*1 M;
+E2_7_8_1 := ((cmax_E2_7_8_1 - cmin_E2_7_8_1)*1/(1 + exp((t12_E2_7_8_1 - t)/s_E2_7_8_1)) + cmin_E2_7_8_1)*1 M;
+E2_7_8_2 := ((cmax_E2_7_8_2 - cmin_E2_7_8_2)*1/(1 + exp((t12_E2_7_8_2 - t)/s_E2_7_8_2)) + cmin_E2_7_8_2)*1 M;
+E3_1_4_3 := ((cmax_E3_1_4_3 - cmin_E3_1_4_3)*1/(1 + exp((t12_E3_1_4_3 - t)/s_E3_1_4_3)) + cmin_E3_1_4_3)*1 M;
+EPC_mem := ((cmax_EPC_mem-cmin_EPC_mem)*1/(1+exp((t12_EPC_mem-t)/s_EPC_mem))+cmin_EPC_mem)*1e-18 mole;
+EPE_mem := ((cmax_EPE_mem-cmin_EPE_mem)*1/(1+exp((t12_EPE_mem-t)/s_EPE_mem))+cmin_EPE_mem)*1e-18 mole;
+// Reactions:
+R02037 in cytoplasm: $S_Adenosyl_L_methionine + Ethanolamine_phosphate => S_Adenosyl_L_homocysteine + N_Methylethanolamine_phosphate; (vmax_R02037*S_Adenosyl_L_methionine/(km_S_Adenosyl_L_methionine_R02037 + S_Adenosyl_L_methionine))*Ethanolamine_phosphate/(km_Ethanolamine_phosphate_R02037 + Ethanolamine_phosphate);
+R06868 in cytoplasm: $S_Adenosyl_L_methionine + N_Methylethanolamine_phosphate => S_Adenosyl_L_homocysteine + Phosphodimethylethanolamine; k_R06868*E2_1_1_103*S_Adenosyl_L_methionine*N_Methylethanolamine_phosphate;
+R06869 in cytoplasm: $S_Adenosyl_L_methionine + Phosphodimethylethanolamine => S_Adenosyl_L_homocysteine + Choline_phosphate; (vmax_R06869*S_Adenosyl_L_methionine/(km_S_Adenosyl_L_methionine_R06869 + S_Adenosyl_L_methionine))*Phosphodimethylethanolamine/(km_Phosphodimethylethanolamine_R06869 + Phosphodimethylethanolamine);
+EtOHamine_in in cytoplasm: $External_Ethanolamine => Ethanolamine; k_EtOHamine_in*EEtOHamine_in*External_Ethanolamine;
+Choline_in in cytoplasm: $External_Choline => Choline; k_Choline_in*ECholine_in*External_Choline;
+R01468 in cytoplasm: Ethanolamine => Ethanolamine_phosphate; k_R01468*E2_7_1_82*Ethanolamine;
+R01021 in cytoplasm: Choline => Choline_phosphate; k_R01021*E2_7_1_32*Choline;
+R02038 in cytoplasm: Ethanolamine_phosphate => CDP_ethanolamine; k_R02038*E2_7_7_14*Ethanolamine_phosphate;
+R01890 in cytoplasm: Choline_phosphate => CDP_choline; k_R01890*E2_7_7_15*Choline_phosphate;
+R02057 in cytoplasm: CDP_ethanolamine => Phosphatidylethanolamine; k_R02057*E2_7_8_1*CDP_ethanolamine;
+R01321 in cytoplasm: CDP_choline => Phosphatidylcholine; k_R01321*E2_7_8_2*CDP_choline;
+TransportPC in cytoplasm: Phosphatidylcholine => Phosphatidylcholine_mem; k_TransportPC * EPC_mem * Phosphatidylcholine in cytoplasm;
+TransportPE in cytoplasm: Phosphatidylethanolamine => Phosphatidylethanolamine_mem; k_TransportPE * EPE_mem * Phosphatidylethanolamine in cytoplasm;
+
+// Species initializations:
+S_Adenosyl_L_methionine = 2*1e-6 M;
+Ethanolamine_phosphate = 1.99111111*0.001 M;
+N_Methylethanolamine_phosphate = 3*1e-5 M;
+Phosphodimethylethanolamine = 3*1e-5 M;
+S_Adenosyl_L_homocysteine = 4*1e-6 M;
+External_Ethanolamine = 7.77777778*1e-5 M;
+External_Choline = 4.74444444*1e-5 M;
+Ethanolamine = 6.22222222*1e-5 M;
+Choline = 3.86666667*0.0001 M;
+Choline_phosphate = 2.28222222*0.001 M;
+CDP_ethanolamine = 2.37777778*0.0001 M;
+CDP_choline = 1.49333333*0.0001 M;
+Phosphatidylcholine = (107.29/4)*0.001 M;
+Phosphatidylethanolamine = (33.32/4)*0.001 M;
+
+Phosphatidylcholine_mem = (107.29/4)*0.001 M;
+Phosphatidylethanolamine_mem = (33.32/4)*0.001 M;
+
+// Compartment initializations:
+const_ext = 80*1e-5 L;
+
+// Variable initializations:
+Vmax = 27;
+Vmin = 4;
+t12 = 97200;
+s = 7200;
+cmax_E2_1_1_103 = 1;
+cmin_E2_1_1_103 = 1;
+t12_E2_1_1_103 = 1;
+s_E2_1_1_103 = 1;
+cmax_EEtOHamine_in = 1;
+cmin_EEtOHamine_in = 1;
+t12_EEtOHamine_in = 1;
+s_EEtOHamine_in = 1;
+cmax_ECholine_in = 0.0346069676590452;
+cmin_ECholine_in = 0.0049083726975313;
+t12_ECholine_in = 116827.519252525;
+s_ECholine_in = 0.00107547380667282;
+cmax_E2_7_1_82 = 1;
+cmin_E2_7_1_82 = 1;
+t12_E2_7_1_82 = 1;
+s_E2_7_1_82 = 1;
+cmax_E2_7_1_32 = 0.00426896188626802;
+cmin_E2_7_1_32 = 2.04167840952407e-07;
+t12_E2_7_1_32 = 3.04206327779766;
+s_E2_7_1_32 = 0.207466145440439;
+cmax_E2_7_7_14 = 1;
+cmin_E2_7_7_14 = 1;
+t12_E2_7_7_14 = 1;
+s_E2_7_7_14 = 1;
+cmax_E2_7_7_15 = 0.00372288546318973;
+cmin_E2_7_7_15 = 1.05623639308935e-09;
+t12_E2_7_7_15 = 1522.33183277326;
+s_E2_7_7_15 = 31358.9121563734;
+cmax_E2_7_8_1 = 1;
+cmin_E2_7_8_1 = 1;
+t12_E2_7_8_1 = 1;
+s_E2_7_8_1 = 1;
+cmax_E2_7_8_2 = 0.00145909077768635;
+cmin_E2_7_8_2 = 0.668469857434433;
+t12_E2_7_8_2 = 594.550786768542;
+s_E2_7_8_2 = 7.39044337446253;
+cmax_E3_1_4_3 = 1;
+cmin_E3_1_4_3 = 1;
+t12_E3_1_4_3 = 1;
+s_E3_1_4_3 = 1;
+vmax_R02037 = E2_1_1_103*kcat_S_Adenosyl_L_methionine_R02037;
+kcat_S_Adenosyl_L_methionine_R02037 = 0.392 second^-1;
+km_S_Adenosyl_L_methionine_R02037 = 0.0299*0.001 M;
+km_Ethanolamine_phosphate_R02037 = 0.0542*0.001 M;
+k_R06868 = 1;
+vmax_R06869 = E2_1_1_103*kcat_S_Adenosyl_L_methionine_R06869;
+kcat_S_Adenosyl_L_methionine_R06869 = 0.487 second^-1;
+km_S_Adenosyl_L_methionine_R06869 = 0.0331*0.001 M;
+km_Phosphodimethylethanolamine_R06869 = 0.0668*0.001 M;
+k_EtOHamine_in = 1;
+k_Choline_in = 0.000134101253392018;
+k_R01468 = 1;
+k_R01021 = 0.337377315501566;
+k_R02038 = 1;
+k_R01890 = 31.7072700403049;
+k_R02057 = 1;
+k_R01321 = 5493389311.58001;
+k_TransportPC = 0
+k_TransportPE = 0
+km_N_Methylethanolamine_phosphate_R06868 = 0.181*0.001 M;
+kcat_N_Methylethanolamine_phosphate_R06868 = 3.63 second^-1;
+km_Ethanolamine_R01468 = 0.071*0.001 M;
+km_Ethanolamine_phosphate_R02038 = 0.373*0.001 M;
+k_R01312 = 1;
+k_R02052 = 1;
+cmax_EPC_mem = 0;
+cmin_EPC_mem = 0;
+t12_EPC_mem = 0;
+s_EPC_mem = 0;
+cmax_EPE_mem = 0;
+cmin_EPE_mem = 0;
+t12_EPE_mem = 0;
+s_EPE_mem = 0;
+
+// Other declarations:
+var cytoplasm, t, E2_1_1_103, EEtOHamine_in, ECholine_in, E2_7_1_82, E2_7_1_32;
+var E2_7_7_14, E2_7_7_15, E2_7_8_1, E2_7_8_2, E3_1_4_3, EPE_mem, EPC_mem;
+const Vmax, Vmin, t12, s, const_ext, cmax_E2_1_1_103, cmin_E2_1_1_103, t12_E2_1_1_103;
+const s_E2_1_1_103, cmax_EEtOHamine_in, cmin_EEtOHamine_in, t12_EEtOHamine_in;
+const s_EEtOHamine_in, cmax_ECholine_in, cmin_ECholine_in, t12_ECholine_in;
+const s_ECholine_in, cmax_E2_7_1_82, cmin_E2_7_1_82, t12_E2_7_1_82, s_E2_7_1_82;
+const cmax_E2_7_1_32, cmin_E2_7_1_32, t12_E2_7_1_32, s_E2_7_1_32, cmax_E2_7_7_14;
+const cmin_E2_7_7_14, t12_E2_7_7_14, s_E2_7_7_14, cmax_E2_7_7_15, cmin_E2_7_7_15;
+const t12_E2_7_7_15, s_E2_7_7_15, cmax_E2_7_8_1, cmin_E2_7_8_1, t12_E2_7_8_1;
+const s_E2_7_8_1, cmax_E2_7_8_2, cmin_E2_7_8_2, t12_E2_7_8_2, s_E2_7_8_2;
+const cmax_EPE_mem, cmin_EPE_mem, t12_EPE_mem, s_EPE_mem;
+const cmax_EPC_mem, cmin_EPC_mem, t12_EPC_mem, s_EPC_mem;
+const cmax_E3_1_4_3, cmin_E3_1_4_3, t12_E3_1_4_3, s_E3_1_4_3, vmax_R02037;
+const kcat_S_Adenosyl_L_methionine_R02037, km_S_Adenosyl_L_methionine_R02037;
+const km_Ethanolamine_phosphate_R02037, k_R06868, vmax_R06869, kcat_S_Adenosyl_L_methionine_R06869;
+const km_S_Adenosyl_L_methionine_R06869, km_Phosphodimethylethanolamine_R06869;
+const k_EtOHamine_in, k_Choline_in, k_R01468, k_R01021, k_R02038, k_R01890;
+const k_R02057, k_R01321, km_N_Methylethanolamine_phosphate_R06868, kcat_N_Methylethanolamine_phosphate_R06868;
+const km_Ethanolamine_R01468, km_Ethanolamine_phosphate_R02038, k_R01312;
+const k_R02052;
+
+// Unit definitions:
+unit L = litre;
+unit M = mole / litre;

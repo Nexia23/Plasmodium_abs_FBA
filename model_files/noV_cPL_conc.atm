@@ -1,0 +1,75 @@
+# Antimony code for ode system of phospholipid synthesis molecules in absolute numbers, units are mole, second, liter
+# Definition of time variable
+t := Time;
+
+# Unit definitions
+unit M = mole * liter^-1;
+
+# Definition of compartment volume
+compartment cytoplasm;
+cytoplasm = 1;
+compartment const_ext  = 2;
+
+# Enzyme initialisation
+cmax_ECholine_in = 0;
+cmin_ECholine_in = 0;
+t12_ECholine_in = 0;
+s_ECholine_in = 0;
+ECholine_in := ((cmax_ECholine_in-cmin_ECholine_in)*1/(1+exp((t12_ECholine_in-t)/s_ECholine_in))+cmin_ECholine_in)*1 M;
+ECholine_in in cytoplasm;
+cmax_E2_7_1_32 = 0;
+cmin_E2_7_1_32 = 0;
+t12_E2_7_1_32 = 0;
+s_E2_7_1_32 = 0;
+E2_7_1_32 := ((cmax_E2_7_1_32-cmin_E2_7_1_32)*1/(1+exp((t12_E2_7_1_32-t)/s_E2_7_1_32))+cmin_E2_7_1_32)*1 M;
+E2_7_1_32 in cytoplasm;
+cmax_E2_7_7_15 = 0;
+cmin_E2_7_7_15 = 0;
+t12_E2_7_7_15 = 0;
+s_E2_7_7_15 = 0;
+E2_7_7_15 := ((cmax_E2_7_7_15-cmin_E2_7_7_15)*1/(1+exp((t12_E2_7_7_15-t)/s_E2_7_7_15))+cmin_E2_7_7_15)*1 M;
+E2_7_7_15 in cytoplasm;
+cmax_E2_7_8_2 = 0;
+cmin_E2_7_8_2 = 0;
+t12_E2_7_8_2 = 0;
+s_E2_7_8_2 = 0;
+E2_7_8_2 := ((cmax_E2_7_8_2-cmin_E2_7_8_2)*1/(1+exp((t12_E2_7_8_2-t)/s_E2_7_8_2))+cmin_E2_7_8_2)*1 M;
+E2_7_8_2 in cytoplasm;
+cmax_EPC_mem = 0;
+cmin_EPC_mem = 0;
+t12_EPC_mem = 0;
+s_EPC_mem = 0;
+EPC_mem := ((cmax_EPC_mem-cmin_EPC_mem)*1/(1+exp((t12_EPC_mem-t)/s_EPC_mem))+cmin_EPC_mem)*1 M;
+EPC_mem in cytoplasm
+
+# Species initialisation 
+# values used from Vo Duy et al. or for lipids from Alex
+const External_Choline = 1.42333333 M;
+External_Choline  in const_ext;
+Choline = 7.9 M;
+Choline  in cytoplasm;
+Choline_phosphate = 4.57 M;
+Choline_phosphate  in cytoplasm;
+CDP_choline = 0.209 M;
+CDP_choline  in cytoplasm;
+
+Phosphatidylcholine = 27.65 M;
+Phosphatidylcholine  in cytoplasm;
+
+# membrane species
+Phosphatidylcholine_mem = 107.29 M;
+Phosphatidylcholine_mem  in cytoplasm;
+
+# vmax initialisation
+k_Choline_in = 0
+k_R01021 = 0
+k_R01890 = 0
+k_R01321 = 0
+k_TransportPC = 0
+
+# Reactions initialisation
+Choline_in: External_Choline -> Choline; k_Choline_in * ECholine_in * External_Choline in cytoplasm;
+R01021: Choline -> Choline_phosphate; k_R01021 * E2_7_1_32 * Choline in cytoplasm;
+R01890: Choline_phosphate -> CDP_choline; k_R01890 * E2_7_7_15 * Choline_phosphate in cytoplasm;
+R01321: CDP_choline -> Phosphatidylcholine; k_R01321 * E2_7_8_2 * CDP_choline in cytoplasm;
+TransportPC: Phosphatidylcholine => Phosphatidylcholine_mem; k_TransportPC * EPC_mem * Phosphatidylcholine in cytoplasm;

@@ -1,0 +1,104 @@
+# Antimony code for ode system of phospholipid synthesis 
+ 
+# Definition of time variable
+t := Time;
+
+# Unit definitions
+unit muM = 1e-6 * mole * litre^-1;
+# Definition of compartment volume
+const compartment cytoplasm;
+cytoplasm = 5e-11 L;
+
+# Enzyme initialisation
+
+# Species initialisation
+# guess
+Phosphatidylserine = 1000.0 muM
+# from Yurkovich Data
+const S_Adenosyl_L_methionine = 2 muM
+# from Vo Duy Data
+Ethanolamine_phosphate = 10075.2 muM
+# guess
+N_Methylethanolamine_phosphate = 30 muM
+# guess
+Phosphodimethylethanolamine = 30 muM
+# from Vo Duy Data
+const External_Ethanolamine = 261.535 muM
+# from Vo Duy Data
+const External_L_Serine = 506.464 muM
+# from Vo Duy Data
+const External_Choline = 160.034 muM
+# from Vo Duy Data
+L_Serine = 933.198 muM
+# from Vo Duy Data
+Ethanolamine = 314.694 muM
+# from Vo Duy Data
+Choline = 1598.35 muM
+# from Vo Duy Data
+Choline_phosphate = 11567.8 muM
+# from Vo Duy Data
+CDP_ethanolamine = 1200.31 muM
+# from Vo Duy Data
+CDP_choline = 752.529 muM
+# from Vo Duy Data
+Phosphatidylcholine = 4804.37 muM
+# from Vo Duy Data
+Phosphatidylethanolamine = 6051.33 muM
+# from Yurkovich Data
+S_Adenosyl_L_homocysteine = 2 muM
+
+
+# Kinetic parameters initialisation
+k_R02055 = 1.0 second^-1
+k_R02037 = 1.0 second^-1
+ki_N_Methylethanolamine_phosphate_R02037 = 1.0 second^-1
+ki_Phosphodimethylethanolamine_R02037 = 1.0 second^-1
+k_R06868 = 1.0 second^-1
+ki_Ethanolamine_phosphate_R06868 = 1.0 second^-1
+ki_Phosphodimethylethanolamine_R06868 = 1.0 second^-1
+k_R06869 = 1.0 second^-1
+ki_Ethanolamine_phosphate_R06869 = 1.0 second^-1
+ki_N_Methylethanolamine_phosphate_R06869 = 1.0 second^-1
+k_EtOHamine_in = 1.0 second^-1
+k_L_Serine_in = 1.0 second^-1
+k_Choline_in = 1.0 second^-1
+k_R01800 = 1.0 second^-1
+k_R01468 = 1.0 second^-1
+k_R01021 = 1.0 second^-1
+k_R02038 = 1.0 second^-1
+k_R01890 = 1.0 second^-1
+k_R02057 = 1.0 second^-1
+k_R01321 = 1.0 second^-1
+k_R01312 = 1.0 second^-1
+ki_Phosphatidylethanolamine_R01312 = 1.0 second^-1
+k_R02052 = 1.0 second^-1
+ki_Phosphatidylcholine_R02052 = 1.0 second^-1
+k_Serine_to_EtOHamine = 1.0 second^-1
+k_R01799 = 1.0 second^-1
+k_R02239 = 1.0 second^-1
+k_R02240 = 1.0 second^-1
+k_TransportPC = 1.0 second^-1
+k_TransportPE = 1.0 second^-1
+k_TransportPS = 1.0 second^-1
+
+# Reactions initialisation
+R02055: Phosphatidylserine => Phosphatidylethanolamine; k_R02055 * Phosphatidylserine in cytoplasm;
+R02037: Ethanolamine_phosphate => N_Methylethanolamine_phosphate; k_R02037 * Ethanolamine_phosphate * 1/(1+N_Methylethanolamine_phosphate/ki_N_Methylethanolamine_phosphate_R02037) * 1/(1+Phosphodimethylethanolamine/ki_Phosphodimethylethanolamine_R02037) in cytoplasm;
+R06868: N_Methylethanolamine_phosphate => Phosphodimethylethanolamine; k_R06868 * N_Methylethanolamine_phosphate * 1/(1+Ethanolamine_phosphate/ki_Ethanolamine_phosphate_R06868) * 1/(1+Phosphodimethylethanolamine/ki_Phosphodimethylethanolamine_R06868) in cytoplasm;
+R06869: Phosphodimethylethanolamine => Choline_phosphate; k_R06869 * Phosphodimethylethanolamine * 1/(1+Ethanolamine_phosphate/ki_Ethanolamine_phosphate_R06869) * 1/(1+N_Methylethanolamine_phosphate/ki_N_Methylethanolamine_phosphate_R06869) in cytoplasm;
+EtOHamine_in: External_Ethanolamine => Ethanolamine; k_EtOHamine_in * External_Ethanolamine in cytoplasm;
+L_Serine_in: External_L_Serine => L_Serine; k_L_Serine_in * External_L_Serine in cytoplasm;
+Choline_in: External_Choline => Choline; k_Choline_in * External_Choline in cytoplasm;
+R01800: L_Serine => Phosphatidylserine; k_R01800 * L_Serine in cytoplasm;
+R01468: Ethanolamine => Ethanolamine_phosphate; k_R01468 * Ethanolamine in cytoplasm;
+R01021: Choline => Choline_phosphate; k_R01021 * Choline in cytoplasm;
+R02038: Ethanolamine_phosphate => CDP_ethanolamine; k_R02038 * Ethanolamine_phosphate in cytoplasm;
+R01890: Choline_phosphate => CDP_choline; k_R01890 * Choline_phosphate in cytoplasm;
+R02057: CDP_ethanolamine => Phosphatidylethanolamine; k_R02057 * CDP_ethanolamine in cytoplasm;
+R01321: CDP_choline => Phosphatidylcholine; k_R01321 * CDP_choline in cytoplasm;
+R01312: Phosphatidylcholine => Choline_phosphate; k_R01312 * Phosphatidylcholine * 1/(1+Phosphatidylethanolamine/ki_Phosphatidylethanolamine_R01312) in cytoplasm;
+R02052: Phosphatidylethanolamine => Ethanolamine_phosphate; k_R02052 * Phosphatidylethanolamine * 1/(1+Phosphatidylcholine/ki_Phosphatidylcholine_R02052) in cytoplasm;
+Serine_to_EtOHamine: L_Serine => Ethanolamine; k_Serine_to_EtOHamine * L_Serine in cytoplasm;
+TransportPC: Phosphatidylcholine => ; k_TransportPC * Phosphatidylcholine in cytoplasm;
+TransportPE: Phosphatidylethanolamine => ; k_TransportPE * Phosphatidylethanolamine in cytoplasm;
+TransportPS: Phosphatidylserine => ; k_TransportPS * Phosphatidylserine in cytoplasm;
