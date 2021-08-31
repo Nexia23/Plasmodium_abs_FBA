@@ -10,42 +10,37 @@ const compartment cytoplasm;
 cytoplasm = 5e-11 L;
 
 # Enzyme initialisation
-E2_7_8_8 = 1 muM
-EEtOHamine_in = 1 muM
-E4_1_1 = 1 muM
 E2_7_7_41 = 1 muM
-EL_Serine_in = 1 muM
-E2_7_8_1 = 1 muM
-E2_1_1_103 = 1 muM
-E2_7_1_32 = 1 muM
-E2_7_1_107 = 1 muM
-E3_1_4_3 = 1 muM
-E2_7_8_2 = 1 muM
-E2_7_7_14 = 1 muM
-ECholine_in = 1 muM
-E2_7_1_82 = 1 muM
 E4_1_1_65 = 1 muM
+E2_7_7_14 = 1 muM
 E2_7_7_15 = 1 muM
+ECholine_in = 1 muM
+EPS_mem = 1 muM
+EPSSbe = 1 muM
+EEtOHamine_in = 1 muM
 E3_1_3_4 = 1 muM
-
+EPC_mem = 1 muM
+E2_7_8_2 = 1 muM
+E2_7_8_8 = 1 muM
+E3_1_4_3 = 1 muM
+E2_1_1_103 = 1 muM
+E4_1_1 = 1 muM
+E2_7_8_1 = 1 muM
+E2_7_1_107 = 1 muM
+EL_Serine_in = 1 muM
+E2_7_1_82 = 1 muM
+EPE_mem = 1 muM
+E2_7_1_32 = 1 muM
 
 # Species initialisation
-# guess
-Phosphatidylserine = 1000.0 muM
-# from Yurkovich Data
-const S_Adenosyl_L_methionine = 2 muM
+Phosphatidylserine = 0 muM
+
 # from Vo Duy Data
 Ethanolamine_phosphate = 10075.2 muM
-# guess
-N_Methylethanolamine_phosphate = 30 muM
-# guess
-Phosphodimethylethanolamine = 30 muM
-# from Vo Duy Data
-const External_Ethanolamine = 261.535 muM
-# from Vo Duy Data
-const External_L_Serine = 506.464 muM
-# from Vo Duy Data
-const External_Choline = 160.034 muM
+
+const External_Ethanolamine = 184.94 muM
+const External_L_Serine = 15 muM
+const External_Choline = 37.57 muM
 # from Vo Duy Data
 L_Serine = 933.198 muM
 # from Vo Duy Data
@@ -62,8 +57,7 @@ CDP_choline = 752.529 muM
 Phosphatidylcholine = 4804.37 muM
 # from Vo Duy Data
 Phosphatidylethanolamine = 6051.33 muM
-# from Yurkovich Data
-S_Adenosyl_L_homocysteine = 2 muM
+
 # from Maier Data
 Phosphatidylcholine_mem = 25268.4 muM
 # from Maier Data
@@ -72,173 +66,126 @@ Phosphatidylethanolamine_mem = 11422.7 muM
 Phosphatidylserine_mem = 3022.22 muM
 
 # Kinetic parameters initialisation
-k_R02055_1 = 1.0 second^-1;
-kd_R02055_1 = 1.0 second^-1;
-k_R02055_3 = 1.0 second^-1;
+k_R02055_1 = 1.0;
+kd_R02055_1 = 1.0;
+k_R02055_3 = 1.0;
 
-k_R02037_1 = 1.0 second^-1;
-kd_R02037_1 = 1.0 second^-1;
-k_R02037_3 = 1.0 second^-1;
+k_R02037_1 = 1.0;
+kd_R02037_1 = 1.0;
+k_R02037_3 = 1.0;
 
-ki_R02037_4 = 1.0 second^-1;
-kd_R02037_5 = 1.0 second^-1;
+k_EtOHamine_in_1 = 1.0;
+kd_EtOHamine_in_1 = 1.0;
+k_EtOHamine_in_3 = 1.0;
 
-ki_R02037_6 = 1.0 second^-1;
-kd_R02037_7 = 1.0 second^-1;
+k_L_Serine_in_1 = 1.0;
+kd_L_Serine_in_1 = 1.0;
+k_L_Serine_in_3 = 1.0;
 
-k_R06868_1 = 1.0 second^-1;
-kd_R06868_1 = 1.0 second^-1;
-k_R06868_3 = 1.0 second^-1;
+k_Choline_in_1 = 1.0;
+kd_Choline_in_1 = 1.0;
+k_Choline_in_3 = 1.0;
 
-ki_R06868_4 = 1.0 second^-1;
-kd_R06868_5 = 1.0 second^-1;
+k_R01800_1 = 1.0;
+kd_R01800_1 = 1.0;
+k_R01800_3 = 1.0;
 
-ki_R06868_6 = 1.0 second^-1;
-kd_R06868_7 = 1.0 second^-1;
+k_R01468_1 = 1.0;
+kd_R01468_1 = 1.0;
+k_R01468_3 = 1.0;
 
-k_R06869_1 = 1.0 second^-1;
-kd_R06869_1 = 1.0 second^-1;
-k_R06869_3 = 1.0 second^-1;
+k_R01021_1 = 1.0;
+kd_R01021_1 = 1.0;
+k_R01021_3 = 1.0;
 
-ki_R06869_4 = 1.0 second^-1;
-kd_R06869_5 = 1.0 second^-1;
+k_R02038_1 = 1.0;
+kd_R02038_1 = 1.0;
+k_R02038_3 = 1.0;
 
-ki_R06869_6 = 1.0 second^-1;
-kd_R06869_7 = 1.0 second^-1;
+k_R01890_1 = 1.0;
+kd_R01890_1 = 1.0;
+k_R01890_3 = 1.0;
 
-k_EtOHamine_in_1 = 1.0 second^-1;
-kd_EtOHamine_in_1 = 1.0 second^-1;
-k_EtOHamine_in_3 = 1.0 second^-1;
+k_R02057_1 = 1.0;
+kd_R02057_1 = 1.0;
+k_R02057_3 = 1.0;
 
-k_L_Serine_in_1 = 1.0 second^-1;
-kd_L_Serine_in_1 = 1.0 second^-1;
-k_L_Serine_in_3 = 1.0 second^-1;
+k_R01321_1 = 1.0;
+kd_R01321_1 = 1.0;
+k_R01321_3 = 1.0;
 
-k_Choline_in_1 = 1.0 second^-1;
-kd_Choline_in_1 = 1.0 second^-1;
-k_Choline_in_3 = 1.0 second^-1;
+k_Serine_to_EtOHamine_1 = 1.0;
+kd_Serine_to_EtOHamine_1 = 1.0;
+k_Serine_to_EtOHamine_3 = 1.0;
 
-k_R01800_1 = 1.0 second^-1;
-kd_R01800_1 = 1.0 second^-1;
-k_R01800_3 = 1.0 second^-1;
-
-k_R01468_1 = 1.0 second^-1;
-kd_R01468_1 = 1.0 second^-1;
-k_R01468_3 = 1.0 second^-1;
-
-k_R01021_1 = 1.0 second^-1;
-kd_R01021_1 = 1.0 second^-1;
-k_R01021_3 = 1.0 second^-1;
-
-k_R02038_1 = 1.0 second^-1;
-kd_R02038_1 = 1.0 second^-1;
-k_R02038_3 = 1.0 second^-1;
-
-k_R01890_1 = 1.0 second^-1;
-kd_R01890_1 = 1.0 second^-1;
-k_R01890_3 = 1.0 second^-1;
-
-k_R02057_1 = 1.0 second^-1;
-kd_R02057_1 = 1.0 second^-1;
-k_R02057_3 = 1.0 second^-1;
-
-k_R01321_1 = 1.0 second^-1;
-kd_R01321_1 = 1.0 second^-1;
-k_R01321_3 = 1.0 second^-1;
-
-k_R01312_1 = 1.0 second^-1;
-kd_R01312_1 = 1.0 second^-1;
-k_R01312_3 = 1.0 second^-1;
-
-ki_R01312_4 = 1.0 second^-1;
-kd_R01312_5 = 1.0 second^-1;
-
-k_R02052_1 = 1.0 second^-1;
-kd_R02052_1 = 1.0 second^-1;
-k_R02052_3 = 1.0 second^-1;
-
-ki_R02052_4 = 1.0 second^-1;
-kd_R02052_5 = 1.0 second^-1;
-
-k_Serine_to_EtOHamine_1 = 1.0 second^-1;
-kd_Serine_to_EtOHamine_1 = 1.0 second^-1;
-k_Serine_to_EtOHamine_3 = 1.0 second^-1;
-
-
-k_TransportPC = 1.0 second^-1;
-k_TransportPE = 1.0 second^-1;
-k_TransportPS = 1.0 second^-1;
+k_PSSbe_1 = 1.0;
+kd_PSSbe_1 = 1.0;
+k_PSSbe_3 = 1.0;
+kd_PSSbe_3 = 1.0;
+k_PSSbe_5 = 1.0;
 
 
 # Reactions initialisation
 R02055_1: Phosphatidylserine + E4_1_1_65 => E4_1_1_65Phosphatidylserine; k_R02055_1 * Phosphatidylserine * E4_1_1_65 in cytoplasm;
 R02055_2: E4_1_1_65Phosphatidylserine => Phosphatidylserine + E4_1_1_65; kd_R02055_1 * Phosphatidylserine * E4_1_1_65 in cytoplasm;
-R02055_3: E4_1_1_65Phosphatidylserine => E_R02055 + Phosphatidylethanolamine; k_R02055_3 * E4_1_1_65Phosphatidylserine in cytoplasm;
+R02055_3: E4_1_1_65Phosphatidylserine => E4_1_1_65 + Phosphatidylethanolamine; k_R02055_3 * E4_1_1_65Phosphatidylserine in cytoplasm;
 R02037_1: Ethanolamine_phosphate + E2_1_1_103 => E2_1_1_103Ethanolamine_phosphate; k_R02037_1 * Ethanolamine_phosphate * E2_1_1_103 in cytoplasm;
 R02037_2: E2_1_1_103Ethanolamine_phosphate => Ethanolamine_phosphate + E2_1_1_103; kd_R02037_1 * Ethanolamine_phosphate * E2_1_1_103 in cytoplasm;
-R02037_3: E2_1_1_103Ethanolamine_phosphate => E_R02037 + N_Methylethanolamine_phosphate; k_R02037_3 * E2_1_1_103Ethanolamine_phosphate in cytoplasm;
-R02037_4: N_Methylethanolamine_phosphate + EE2_1_1_103 => EE2_1_1_103N_Methylethanolamine_phosphate; ki_R02037_4 * N_Methylethanolamine_phosphate * EE2_1_1_103 in cytoplasm;
-R02037_5: EE2_1_1_103N_Methylethanolamine_phosphate => N_Methylethanolamine_phosphate + EE2_1_1_103; kd_R02037_5 * EE2_1_1_103N_Methylethanolamine_phosphate in cytoplasm;
-R02037_6: Phosphodimethylethanolamine + EE2_1_1_103 => EE2_1_1_103Phosphodimethylethanolamine; ki_R02037_6 * Phosphodimethylethanolamine * EE2_1_1_103 in cytoplasm;
-R02037_7: EE2_1_1_103Phosphodimethylethanolamine => Phosphodimethylethanolamine + EE2_1_1_103; kd_R02037_7 * EE2_1_1_103Phosphodimethylethanolamine in cytoplasm;
-R06868_1: N_Methylethanolamine_phosphate + E2_1_1_103 => E2_1_1_103N_Methylethanolamine_phosphate; k_R06868_1 * N_Methylethanolamine_phosphate * E2_1_1_103 in cytoplasm;
-R06868_2: E2_1_1_103N_Methylethanolamine_phosphate => N_Methylethanolamine_phosphate + E2_1_1_103; kd_R06868_1 * N_Methylethanolamine_phosphate * E2_1_1_103 in cytoplasm;
-R06868_3: E2_1_1_103N_Methylethanolamine_phosphate => E_R06868 + Phosphodimethylethanolamine; k_R06868_3 * E2_1_1_103N_Methylethanolamine_phosphate in cytoplasm;
-R06868_4: Ethanolamine_phosphate + EE2_1_1_103 => EE2_1_1_103Ethanolamine_phosphate; ki_R06868_4 * Ethanolamine_phosphate * EE2_1_1_103 in cytoplasm;
-R06868_5: EE2_1_1_103Ethanolamine_phosphate => Ethanolamine_phosphate + EE2_1_1_103; kd_R06868_5 * EE2_1_1_103Ethanolamine_phosphate in cytoplasm;
-R06868_6: Phosphodimethylethanolamine + EE2_1_1_103 => EE2_1_1_103Phosphodimethylethanolamine; ki_R06868_6 * Phosphodimethylethanolamine * EE2_1_1_103 in cytoplasm;
-R06868_7: EE2_1_1_103Phosphodimethylethanolamine => Phosphodimethylethanolamine + EE2_1_1_103; kd_R06868_7 * EE2_1_1_103Phosphodimethylethanolamine in cytoplasm;
-R06869_1: Phosphodimethylethanolamine + E2_1_1_103 => E2_1_1_103Phosphodimethylethanolamine; k_R06869_1 * Phosphodimethylethanolamine * E2_1_1_103 in cytoplasm;
-R06869_2: E2_1_1_103Phosphodimethylethanolamine => Phosphodimethylethanolamine + E2_1_1_103; kd_R06869_1 * Phosphodimethylethanolamine * E2_1_1_103 in cytoplasm;
-R06869_3: E2_1_1_103Phosphodimethylethanolamine => E_R06869 + Choline_phosphate; k_R06869_3 * E2_1_1_103Phosphodimethylethanolamine in cytoplasm;
-R06869_4: Ethanolamine_phosphate + EE2_1_1_103 => EE2_1_1_103Ethanolamine_phosphate; ki_R06869_4 * Ethanolamine_phosphate * EE2_1_1_103 in cytoplasm;
-R06869_5: EE2_1_1_103Ethanolamine_phosphate => Ethanolamine_phosphate + EE2_1_1_103; kd_R06869_5 * EE2_1_1_103Ethanolamine_phosphate in cytoplasm;
-R06869_6: N_Methylethanolamine_phosphate + EE2_1_1_103 => EE2_1_1_103N_Methylethanolamine_phosphate; ki_R06869_6 * N_Methylethanolamine_phosphate * EE2_1_1_103 in cytoplasm;
-R06869_7: EE2_1_1_103N_Methylethanolamine_phosphate => N_Methylethanolamine_phosphate + EE2_1_1_103; kd_R06869_7 * EE2_1_1_103N_Methylethanolamine_phosphate in cytoplasm;
+R02037_3: E2_1_1_103Ethanolamine_phosphate => E2_1_1_103 + Choline_phosphate; k_R02037_3 * E2_1_1_103Ethanolamine_phosphate in cytoplasm;
+
 EtOHamine_in_1: External_Ethanolamine + EEtOHamine_in => EEtOHamine_inExternal_Ethanolamine; k_EtOHamine_in_1 * External_Ethanolamine * EEtOHamine_in in cytoplasm;
 EtOHamine_in_2: EEtOHamine_inExternal_Ethanolamine => External_Ethanolamine + EEtOHamine_in; kd_EtOHamine_in_1 * External_Ethanolamine * EEtOHamine_in in cytoplasm;
-EtOHamine_in_3: EEtOHamine_inExternal_Ethanolamine => E_EtOHamine_in + Ethanolamine; k_EtOHamine_in_3 * EEtOHamine_inExternal_Ethanolamine in cytoplasm;
+EtOHamine_in_3: EEtOHamine_inExternal_Ethanolamine => EEtOHamine_in + Ethanolamine; k_EtOHamine_in_3 * EEtOHamine_inExternal_Ethanolamine in cytoplasm;
 L_Serine_in_1: External_L_Serine + EL_Serine_in => EL_Serine_inExternal_L_Serine; k_L_Serine_in_1 * External_L_Serine * EL_Serine_in in cytoplasm;
 L_Serine_in_2: EL_Serine_inExternal_L_Serine => External_L_Serine + EL_Serine_in; kd_L_Serine_in_1 * External_L_Serine * EL_Serine_in in cytoplasm;
-L_Serine_in_3: EL_Serine_inExternal_L_Serine => E_L_Serine_in + L_Serine; k_L_Serine_in_3 * EL_Serine_inExternal_L_Serine in cytoplasm;
+L_Serine_in_3: EL_Serine_inExternal_L_Serine => EL_Serine_in + L_Serine; k_L_Serine_in_3 * EL_Serine_inExternal_L_Serine in cytoplasm;
 Choline_in_1: External_Choline + ECholine_in => ECholine_inExternal_Choline; k_Choline_in_1 * External_Choline * ECholine_in in cytoplasm;
 Choline_in_2: ECholine_inExternal_Choline => External_Choline + ECholine_in; kd_Choline_in_1 * External_Choline * ECholine_in in cytoplasm;
-Choline_in_3: ECholine_inExternal_Choline => E_Choline_in + Choline; k_Choline_in_3 * ECholine_inExternal_Choline in cytoplasm;
+Choline_in_3: ECholine_inExternal_Choline => ECholine_in + Choline; k_Choline_in_3 * ECholine_inExternal_Choline in cytoplasm;
 R01800_1: L_Serine + E2_7_8_8 => E2_7_8_8L_Serine; k_R01800_1 * L_Serine * E2_7_8_8 in cytoplasm;
 R01800_2: E2_7_8_8L_Serine => L_Serine + E2_7_8_8; kd_R01800_1 * L_Serine * E2_7_8_8 in cytoplasm;
-R01800_3: E2_7_8_8L_Serine => E_R01800 + Phosphatidylserine; k_R01800_3 * E2_7_8_8L_Serine in cytoplasm;
+R01800_3: E2_7_8_8L_Serine => E2_7_8_8 + Phosphatidylserine; k_R01800_3 * E2_7_8_8L_Serine in cytoplasm;
 R01468_1: Ethanolamine + E2_7_1_82 => E2_7_1_82Ethanolamine; k_R01468_1 * Ethanolamine * E2_7_1_82 in cytoplasm;
 R01468_2: E2_7_1_82Ethanolamine => Ethanolamine + E2_7_1_82; kd_R01468_1 * Ethanolamine * E2_7_1_82 in cytoplasm;
-R01468_3: E2_7_1_82Ethanolamine => E_R01468 + Ethanolamine_phosphate; k_R01468_3 * E2_7_1_82Ethanolamine in cytoplasm;
+R01468_3: E2_7_1_82Ethanolamine => E2_7_1_82 + Ethanolamine_phosphate; k_R01468_3 * E2_7_1_82Ethanolamine in cytoplasm;
 R01021_1: Choline + E2_7_1_32 => E2_7_1_32Choline; k_R01021_1 * Choline * E2_7_1_32 in cytoplasm;
 R01021_2: E2_7_1_32Choline => Choline + E2_7_1_32; kd_R01021_1 * Choline * E2_7_1_32 in cytoplasm;
-R01021_3: E2_7_1_32Choline => E_R01021 + Choline_phosphate; k_R01021_3 * E2_7_1_32Choline in cytoplasm;
+R01021_3: E2_7_1_32Choline => E2_7_1_32 + Choline_phosphate; k_R01021_3 * E2_7_1_32Choline in cytoplasm;
 R02038_1: Ethanolamine_phosphate + E2_7_7_14 => E2_7_7_14Ethanolamine_phosphate; k_R02038_1 * Ethanolamine_phosphate * E2_7_7_14 in cytoplasm;
 R02038_2: E2_7_7_14Ethanolamine_phosphate => Ethanolamine_phosphate + E2_7_7_14; kd_R02038_1 * Ethanolamine_phosphate * E2_7_7_14 in cytoplasm;
-R02038_3: E2_7_7_14Ethanolamine_phosphate => E_R02038 + CDP_ethanolamine; k_R02038_3 * E2_7_7_14Ethanolamine_phosphate in cytoplasm;
+R02038_3: E2_7_7_14Ethanolamine_phosphate => E2_7_7_14 + CDP_ethanolamine; k_R02038_3 * E2_7_7_14Ethanolamine_phosphate in cytoplasm;
 R01890_1: Choline_phosphate + E2_7_7_15 => E2_7_7_15Choline_phosphate; k_R01890_1 * Choline_phosphate * E2_7_7_15 in cytoplasm;
 R01890_2: E2_7_7_15Choline_phosphate => Choline_phosphate + E2_7_7_15; kd_R01890_1 * Choline_phosphate * E2_7_7_15 in cytoplasm;
-R01890_3: E2_7_7_15Choline_phosphate => E_R01890 + CDP_choline; k_R01890_3 * E2_7_7_15Choline_phosphate in cytoplasm;
+R01890_3: E2_7_7_15Choline_phosphate => E2_7_7_15 + CDP_choline; k_R01890_3 * E2_7_7_15Choline_phosphate in cytoplasm;
 R02057_1: CDP_ethanolamine + E2_7_8_1 => E2_7_8_1CDP_ethanolamine; k_R02057_1 * CDP_ethanolamine * E2_7_8_1 in cytoplasm;
 R02057_2: E2_7_8_1CDP_ethanolamine => CDP_ethanolamine + E2_7_8_1; kd_R02057_1 * CDP_ethanolamine * E2_7_8_1 in cytoplasm;
-R02057_3: E2_7_8_1CDP_ethanolamine => E_R02057 + Phosphatidylethanolamine; k_R02057_3 * E2_7_8_1CDP_ethanolamine in cytoplasm;
+R02057_3: E2_7_8_1CDP_ethanolamine => E2_7_8_1 + Phosphatidylethanolamine; k_R02057_3 * E2_7_8_1CDP_ethanolamine in cytoplasm;
 R01321_1: CDP_choline + E2_7_8_2 => E2_7_8_2CDP_choline; k_R01321_1 * CDP_choline * E2_7_8_2 in cytoplasm;
 R01321_2: E2_7_8_2CDP_choline => CDP_choline + E2_7_8_2; kd_R01321_1 * CDP_choline * E2_7_8_2 in cytoplasm;
-R01321_3: E2_7_8_2CDP_choline => E_R01321 + Phosphatidylcholine; k_R01321_3 * E2_7_8_2CDP_choline in cytoplasm;
-R01312_1: Phosphatidylcholine + E3_1_4_3 => E3_1_4_3Phosphatidylcholine; k_R01312_1 * Phosphatidylcholine * E3_1_4_3 in cytoplasm;
-R01312_2: E3_1_4_3Phosphatidylcholine => Phosphatidylcholine + E3_1_4_3; kd_R01312_1 * Phosphatidylcholine * E3_1_4_3 in cytoplasm;
-R01312_3: E3_1_4_3Phosphatidylcholine => E_R01312 + Choline_phosphate; k_R01312_3 * E3_1_4_3Phosphatidylcholine in cytoplasm;
-R01312_4: Phosphatidylethanolamine + EE3_1_4_3 => EE3_1_4_3Phosphatidylethanolamine; ki_R01312_4 * Phosphatidylethanolamine * EE3_1_4_3 in cytoplasm;
-R01312_5: EE3_1_4_3Phosphatidylethanolamine => Phosphatidylethanolamine + EE3_1_4_3; kd_R01312_5 * EE3_1_4_3Phosphatidylethanolamine in cytoplasm;
-R02052_1: Phosphatidylethanolamine + E3_1_4_3 => E3_1_4_3Phosphatidylethanolamine; k_R02052_1 * Phosphatidylethanolamine * E3_1_4_3 in cytoplasm;
-R02052_2: E3_1_4_3Phosphatidylethanolamine => Phosphatidylethanolamine + E3_1_4_3; kd_R02052_1 * Phosphatidylethanolamine * E3_1_4_3 in cytoplasm;
-R02052_3: E3_1_4_3Phosphatidylethanolamine => E_R02052 + Ethanolamine_phosphate; k_R02052_3 * E3_1_4_3Phosphatidylethanolamine in cytoplasm;
-R02052_4: Phosphatidylcholine + EE3_1_4_3 => EE3_1_4_3Phosphatidylcholine; ki_R02052_4 * Phosphatidylcholine * EE3_1_4_3 in cytoplasm;
-R02052_5: EE3_1_4_3Phosphatidylcholine => Phosphatidylcholine + EE3_1_4_3; kd_R02052_5 * EE3_1_4_3Phosphatidylcholine in cytoplasm;
+R01321_3: E2_7_8_2CDP_choline => E2_7_8_2 + Phosphatidylcholine; k_R01321_3 * E2_7_8_2CDP_choline in cytoplasm;
 Serine_to_EtOHamine_1: L_Serine + E4_1_1 => E4_1_1L_Serine; k_Serine_to_EtOHamine_1 * L_Serine * E4_1_1 in cytoplasm;
 Serine_to_EtOHamine_2: E4_1_1L_Serine => L_Serine + E4_1_1; kd_Serine_to_EtOHamine_1 * L_Serine * E4_1_1 in cytoplasm;
-Serine_to_EtOHamine_3: E4_1_1L_Serine => E_Serine_to_EtOHamine + Ethanolamine; k_Serine_to_EtOHamine_3 * E4_1_1L_Serine in cytoplasm;
+Serine_to_EtOHamine_3: E4_1_1L_Serine => E4_1_1 + Ethanolamine; k_Serine_to_EtOHamine_3 * E4_1_1L_Serine in cytoplasm;
+PSSbe_1: Phosphatidylethanolamine + EPSSbe => EPSSbePhosphatidylethanolamine; k_PSSbe_1 * Phosphatidylethanolamine * EPSSbe in cytoplasm;
+PSSbe_2: EPSSbePhosphatidylethanolamine => Phosphatidylethanolamine + EPSSbe; kd_PSSbe_1 * Phosphatidylethanolamine * EPSSbe in cytoplasm;
+PSSbe_3: L_Serine + EPSSbePhosphatidylethanolamine => EPSSbePhosphatidylethanolamineL_Serine; k_PSSbe_3 * L_Serine * EPSSbePhosphatidylethanolamine in cytoplasm;
+PSSbe_4: EPSSbePhosphatidylethanolamineL_Serine => L_Serine + EPSSbePhosphatidylethanolamine; kd_PSSbe_3 * L_Serine * EPSSbePhosphatidylethanolamine in cytoplasm;
+PSSbe_5: EPSSbePhosphatidylethanolamineL_Serine => EPSSbe + Phosphatidylserine + Ethanolamine; k_PSSbe_5 * EPSSbePhosphatidylethanolamineL_Serine in cytoplasm;
 
-TransportPC: Phosphatidylcholine => ; k_TransportPC * Phosphatidylcholine in cytoplasm;
-TransportPE: Phosphatidylethanolamine => ; k_TransportPE * Phosphatidylethanolamine in cytoplasm;
-TransportPS: Phosphatidylserine => ; k_TransportPS * Phosphatidylserine in cytoplasm;
+# special reactions Tranport
+
+k_TransportPC = 1.0 
+k_TransportPE = 1.0 
+k_TransportPS = 1.0 
+
+TransportPC: Phosphatidylcholine => Phosphatidylcholine_mem; k_TransportPC * Phosphatidylcholine in cytoplasm;
+TransportPE: Phosphatidylethanolamine => Phosphatidylethanolamine_mem; k_TransportPE * Phosphatidylethanolamine in cytoplasm;
+TransportPS: Phosphatidylserine => Phosphatidylserine_mem; k_TransportPS * Phosphatidylserine in cytoplasm;
+
+k_SSTransportPC_mem = 1.0
+k_SSTransportPE_mem = 1.0
+k_SSTransportPS_mem = 1.0
+
+SSTransportPC: Phosphatidylcholine_mem => ; k_SSTransportPC_mem * Phosphatidylcholine_mem in cytoplasm;
+SSTransportPE: Phosphatidylethanolamine_mem => ; k_SSTransportPE_mem * Phosphatidylethanolamine_mem in cytoplasm;
+SSTransportPS: Phosphatidylserine_mem => ; k_SSTransportPS_mem * Phosphatidylserine_mem in cytoplasm;

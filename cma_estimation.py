@@ -1,4 +1,5 @@
 import pickle
+import json
 import time
 import os
 import roadrunner as rr
@@ -10,9 +11,9 @@ sys.path.insert(0, '../Parameter_Sampler/')
 import Estimator
 
 
-def get_parameter_keys(self_para_adjust, datapath):
+def get_parameters(self_para_adjust, datapath):
     """
-    Function to get the names of the parameters, which are fitted
+    Function to get the parameters, which are fitted with their boundaries
     ----------
     Parameters
     ----------
@@ -36,15 +37,14 @@ def get_parameter_keys(self_para_adjust, datapath):
 
     except FileNotFoundError:
         print('Using to_fit_parameter_set')
-        with open(datapath + 'to_fit_para.txt', 'rb') as handle:
-            parametas = pickle.loads(handle.read())
+        try:
+            with open(datapath + 'to_fit_para.txt', 'rb') as handle:
+                parametas = pickle.loads(handle.read())            
+        except:
+            with open(datapath + 'to_fit_para.txt', 'r') as handle:
+                parametas = json.loads(handle.read())
 
-    p_keys = []
-
-    for item in parametas.items():
-        p_keys.append(item[0])
-
-    return p_keys
+    return parametas
 
 
 def mk_bounds(parameter_names, log):
@@ -55,9 +55,9 @@ def mk_bounds(parameter_names, log):
     for key in parameter_names:
         if key.startswith('E'):  # enzyme number bounds
             if log:
-                param_bound[key] = (-5.7, 6, log)  # for log space
+                param_bound[key] = (-7, 6, log)  # for log space
             else:
-                param_bound[key] = (1.6605e-06, 1e6, log)  # for linear space
+                param_bound[key] = (0, 1e6, log)  # for linear space
         if key.startswith('k'):  # mass action k bounds
             if log:
                 param_bound[key] = (-10, 13, log)  # for log space
@@ -70,9 +70,9 @@ def mk_bounds(parameter_names, log):
                 param_bound[key] = (20 * 3600, 40 * 3600, log)
         if key.startswith('cm'):  # sigmoid max and min what do i want?
             if log:
-                param_bound[key] = (-5.7797, 6, log)
+                param_bound[key] = (-7, 6, log)
             else:
-                param_bound[key] = (1.6605e-06, 1e6, log)
+                param_bound[key] = (0, 1e6, log)
         if key.startswith('s_'):  # sigmoid slope, in s
             if log:
                 param_bound[key] = (-3, 4.5, log)
@@ -82,7 +82,7 @@ def mk_bounds(parameter_names, log):
     return param_bound
 
 
-def metabolomics_test_dict(model, metabolites):
+def metabolomics_test_dict(model, metabolites, timepoints=[]):
     """
     Function to create dict of metabolomics data from literature values
     -----------
@@ -114,8 +114,10 @@ def metabolomics_test_dict(model, metabolites):
     model_names = intersection + [a for a in model.getFloatingSpeciesIds()
                                   if a in long_name]
     new_dict = {}
-    stage_dict = {'uninfected': ['uRBC', 'Std.'],
-                  'troph_time': ['Parasite', 'Std..1']}
+    stage_dict = {"uninfected": ['uRBC', 'Std.'],        # uninfected
+                  "ring": None,                  # ring
+                  "troph": ['Parasite', 'Std..1'],  # trophozoite
+                  "schizont": None}                  # schizont
 
     for row in model_names:
         key = row
@@ -123,24 +125,31 @@ def metabolomics_test_dict(model, metabolites):
             key = value_dict[row]
 
         new_dict[row] = {'values': [], 'std': []}
-        for keys in stage_dict.keys():
-            values = work_df.loc[key, stage_dict[keys][0]].astype('float').tolist()
-            stds = work_df.loc[key, stage_dict[keys][1]].tolist()
-            # test if values is float, if true make a list
-            if type(values) == float:
-                values = [values]
-                stds = [stds]
+        for keys in timepoints:
 
-            new_dict[row]['values'].append(values)
-            new_dict[row]['std'].append(stds)
+            if stage_dict[keys] is None:
+                new_dict[row]['values'].append([np.nan])
+                new_dict[row]['std'].append([np.nan])
+
+            else:
+                values = work_df.loc[key, stage_dict[keys][0]].astype('float').tolist()
+                stds = work_df.loc[key, stage_dict[keys][1]].tolist()
+                # test whether if values is float, if true make a list
+                if type(values) == float:
+                    values = [values]
+                    stds = [stds]
+
+                new_dict[row]['values'].append(values)
+                new_dict[row]['std'].append(stds)
 
     # parasite_vol = np.array([4.00**-1 * 1e-3, 26.7**-1 * 1e-3, 26.9**-1 * 1e-3])
     # extract the avs and give proper names
-    print(new_dict)
+
     return new_dict
 
 
-def mke_test_dict(model, maierframe, metabolites):
+def mke_test_dict(model, maierframe, metabolites, 
+                  timepoints=["uninfected", "ring", "troph", "schizont"]):
     """
     Function to create test_dict for objective function
     -----------
@@ -153,7 +162,6 @@ def mke_test_dict(model, maierframe, metabolites):
     metabolites: pandas.DataFrame
         DataFrame of literature values except Alex Maier
     """
-
     long_name_to_maier = {
         '1,2-Diacyl-sn-glycerol': 'DG',
         'DAG': 'DG',
@@ -161,10 +169,10 @@ def mke_test_dict(model, maierframe, metabolites):
         'Phosphatidylethanolamine_mem': 'PE',
         'Phosphatidylcholine_mem': 'PC'}
 
-    stage_dict = {'u_time': ['RBC1', 'RBC2', 'RBC3'],
-                  'ring_time': ['Ring 1', 'Ring 2', 'Ring 3'],
-                  'troph_time': ['Trophozoite 1', 'Trophozoite 2', 'Trophozoite 3'],
-                  'schiz_time': ['Schizont 1', 'Schizont 2', 'Schizont 3']}
+    stage_dict = {"uninfected": ['RBC1', 'RBC2', 'RBC3'],
+                  "ring": ['Ring 1', 'Ring 2', 'Ring 3'],
+                  "troph": ['Trophozoite 1', 'Trophozoite 2', 'Trophozoite 3'],
+                  "schizont": ['Schizont 1', 'Schizont 2', 'Schizont 3']}
 
     # now we make datadf
     work_df = maierframe.copy()
@@ -181,14 +189,14 @@ def mke_test_dict(model, maierframe, metabolites):
         model_name = maier_to_long_name[row]
 
         new_dict[model_name] = {'values': [], 'std': []}
-        for key in stage_dict.keys():
+        for key in timepoints:
             values = work_df.loc[row, stage_dict[key]].tolist()
             stds = [work_df.loc[row, stage_dict[key]].std()] * len(values)
 
             new_dict[model_name]['values'].append(values)
             new_dict[model_name]['std'].append(stds)
 
-    metas_dict = metabolomics_test_dict(model, metabolites)
+    metas_dict = metabolomics_test_dict(model, metabolites, timepoints)
 
     new_dict.update(metas_dict)
 
@@ -246,42 +254,48 @@ def simulation_to_dict(simulation_result_p):
     return s_panda.drop('time', axis=1).to_dict('list')
 
 
-def simulation_to_panda(model, simulation_result):
-    return pd.DataFrame(simulation_result, columns=['time']
+def simulation_to_panda(model, simulation_result, col=['time']):
+    return pd.DataFrame(simulation_result, columns=col
                         + model.getFloatingSpeciesIds())
 
 
 def compute_sqd_distance(simulation_result_dict, data, factor=10**1,
                          normalized=True):
 
-    dist = 0.
     # list of intersecting keys, as only those relevant
     inter = simulation_result_dict.keys() & data.keys()
+
+    dist_ar = np.zeros(len(inter))
+
     alex_bias_lst = ['DAG', 'Phosphatidylserine_mem',
                      'Phosphatidylethanolamine_mem', 'Phosphatidylcholine_mem']
-    for molecule in inter:
+
+    for ar_pos, molecule in enumerate(inter):
         if molecule == 'time':
             continue
+        dist = 0.
+
+        bias_fac = 1
+        if molecule in alex_bias_lst:
+            bias_fac = 2
         # iterate through the measured timepoints, thus finer evaluation of fit
-        for i, means in enumerate(data[molecule]['values']):
-            for pos, mean in enumerate(means):
-                bias_fac = 1
-                # some data entries empty as no literature value found, thus skiped
-                if np.isnan(mean):
+        for i, values in enumerate(data[molecule]['values']):
+            for pos, value in enumerate(values):
+                # data entries empty as no literature value found, thus skipped
+                if np.isnan(value):
                     continue
-                if molecule in alex_bias_lst:
-                    bias_fac = 2
                 if normalized:
-                    dist += np.nansum(((mean
-                            - simulation_result_dict[molecule][i])**2  # noqa:E128
+                    dist += np.nansum(((value
+                            - simulation_result_dict[molecule][i])**2  # noqa: E128
                             * bias_fac)  # noqa:E128
                             / data[molecule]['std'][i][pos]**2)   # noqa: E128
 
                 else:
-                    dist += np.nansum(bias_fac*(mean
+                    dist += np.nansum(bias_fac*(value
                             - simulation_result_dict[molecule][i])**2)  # noqa:E128
+        dist_ar[ar_pos] = dist * factor
 
-    return dist * factor
+    return dist_ar
 
 
 def constrain_concentration(species_timecourse, factor=10**-1):
@@ -327,7 +341,8 @@ def check_growth(species_timecourse, factor=10**-1):
     return decreasing_growth * factor
 
 
-def objective_function(parameter: dict, model, t_data: dict, process_id):
+def objective_function(parameter: dict, model, t_data: dict, process_id,
+                       weight=1):
 
     try:
 
@@ -341,15 +356,16 @@ def objective_function(parameter: dict, model, t_data: dict, process_id):
 
     dic_results = simulation_to_dict(res_p)
 
-    sqd_dis = compute_sqd_distance(dic_results, t_data)
+    sqd_dis_ar = compute_sqd_distance(dic_results, t_data)
 
+    objective_value = sqd_dis_ar.sum() + sqd_dis_ar.std() * weight
     # list of intersecting keys, as only those relevant
     # inter = dic_results.keys() & t_data.keys()
     # score_growth = check_growth(res_p[inter])
-    score_zero = check_zero(res_p)
+    # score_zero = check_zero(res_p)
     # score_conc = constrain_concentration(res_p)
 
-    return sqd_dis + score_zero  # + score_growth
+    return objective_value  # + score_zero  # + score_growth
 
 
 def steady_state_calc(model, parameter: dict):
@@ -358,35 +374,47 @@ def steady_state_calc(model, parameter: dict):
     model = set_model_parameters(model, parameter)
     rr.Logger.disableConsoleLogging()
     try:
-        score = model.SteadyState()
+        # model.conservedMoietyAnalysis = True
+        score = model.steadyStateApproximate()
     except RuntimeError:
-        return 1e40, model
+        return False, model
 
     return score, model
 
 
-def objective_SS_function(parameter: dict, model, t_data: dict, process_id):
+def objective_SS_function(parameter: dict, model, t_data: dict, process_id,
+                          weight=1):
 
-    ss_score, model_in_SS = steady_state_calc(model, parameter)
-    res = model_in_SS.getSteadyStateNamedArray()
+    ss_found, model_in_SS = steady_state_calc(model, parameter)
+    if not ss_found:
+        return 1e30
 
-    if ss_score == 1e40:
-        return ss_score
+    else:
+        try:
+            res = model_in_SS.simulate()
+            res_p = simulation_to_panda(model, res)
 
-    res_p = simulation_to_panda(model, res)
-    dic_results = res_p.to_dict('list')
+            dic_results = res_p[-1::].to_dict('list')
 
-    sqd_dis = compute_sqd_distance(dic_results, t_data)
+            sqd_dis_ar = compute_sqd_distance(dic_results, t_data)
 
-    return sqd_dis
+            objective_value = sqd_dis_ar.sum() + sqd_dis_ar.std() * weight
+        except RuntimeError:
+            objective_value = 1e30
+
+        return objective_value
 
 
 if __name__ == '__main__':
     options = {1: "cPL_conc",
                2: "noV_cPL_conc",
                3: "pc_pe_PL",
-               4: "PLModel"
-               }
+               4: "PLModel",
+               5: "SS_PLModel_ConKin",
+               6: "SS_PLModel_E_MA",
+               7: "SS_PLModel_MA",
+               8: "SS_PLModel_MM"}
+
     entry = sys.argv[1]
     run_id = sys.argv[2]
     print(options)
@@ -404,30 +432,34 @@ if __name__ == '__main__':
 
     model = te.loada(modelpath)
     model.resetAll()
-    p_keys = get_parameter_keys(0, datapath)
-    log = True
+    parameters = get_parameters(0, datapath)
+    log = False
 
-    maier_data = pd.read_csv("~/PhD/Trophozoit/Datasets/maierframe_muMolar.tsv",
+    maier_data = pd.read_csv("~/PhD/malaria_lipid_models/Datasets/maierframe_muMolar.tsv",
                              sep="\t", index_col=0)  # maier dataset
-    meta = pd.read_csv("~/PhD/Trophozoit/Datasets/metabolites_muMolar.tsv",
+    meta = pd.read_csv("~/PhD/malaria_lipid_models/Datasets/metabolites_muMolar.tsv",
                        sep="\t", index_col=0)
 
-    t_data = mke_test_dict(model, maier_data, meta)
+    if name.startswith('SS'):
 
+        t_data = mke_test_dict(model, maier_data, meta, timepoints=["troph"])
+        objective = objective_SS_function
+
+    else:
+        t_data = mke_test_dict(model, maier_data, meta)
+        objective = objective_function
     esta = Estimator.ParameterEstimator()
-    esta.initialize(objective_function,
-                    mk_bounds(p_keys, log),
-                    {'model': model, 't_data': t_data})
+    esta.initialize(objective,
+                    parameters,
+                    {'model': model, 't_data': t_data,
+                     'weight': 0})
 
-    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-8, 'maxiter': 2500,
-                'tolfacupx': 1.0e9, 'popsize_factor': 3}
+    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-8, 'maxiter': 100,
+                'tolfacupx': 1.0e9, 'popsize': 200}
 
-    score_para = esta.run(method='cma', n_lhs=10, run_id=run_id,
-                          cma_sigma0=1.0e0,
+    score_para = esta.run(method='cma', n_lhs=4, run_id=run_id,
+                          cma_sigma0=1.0e-2,
                           optimizer_args=opt_args)
 
-    """score_para = esta.run(method='swarm', iterations=300,
-                                      swarm_size=250)
-                """
     with open(datapath + timestr + run_id + 'whole_paras.txt', 'wb') as handle:
         pickle.dump(score_para, handle)
