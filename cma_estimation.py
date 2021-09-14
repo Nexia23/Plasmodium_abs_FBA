@@ -11,7 +11,7 @@ sys.path.insert(0, '../Parameter_Sampler/')
 import Estimator
 
 
-def get_parameters(self_para_adjust, datapath):
+def get_parameters(self_para_adjust, datapath_p):
     """
     Function to get the parameters, which are fitted with their boundaries
     ----------
@@ -20,7 +20,7 @@ def get_parameters(self_para_adjust, datapath):
     self_para_adjust: bool
         for multiple runs of estimator or when parameters self adjusted
         determines which parameter txt file used
-    datapath: string
+    datapath_p: string
         path to parameter .txt file, pickled dict file keys=names, values=value
     ---------
     returns p_keys: list
@@ -30,18 +30,18 @@ def get_parameters(self_para_adjust, datapath):
         if self_para_adjust == 0:
 
             print("Deleting Parameterset!")
-            os.remove(datapath + "whole_paras.txt")
+            os.remove(datapath_p + "whole_paras.txt")
 
-        with open(datapath + 'whole_paras.txt', 'rb') as handle:
+        with open(datapath_p + 'whole_paras.txt', 'rb') as handle:
             parametas = pickle.loads(handle.read())
 
     except FileNotFoundError:
         print('Using to_fit_parameter_set')
         try:
-            with open(datapath + 'to_fit_para.txt', 'rb') as handle:
+            with open(datapath_p + 'to_fit_para.txt', 'rb') as handle:
                 parametas = pickle.loads(handle.read())            
         except:
-            with open(datapath + 'to_fit_para.txt', 'r') as handle:
+            with open(datapath_p + 'to_fit_para.txt', 'r') as handle:
                 parametas = json.loads(handle.read())
 
     return parametas
