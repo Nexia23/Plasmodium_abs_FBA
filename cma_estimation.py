@@ -375,7 +375,7 @@ def steady_state_calc(model, parameter: dict):
     rr.Logger.disableConsoleLogging()
     try:
         # model.conservedMoietyAnalysis = True
-        score = model.steadyStateApproximate()
+        score = model.steadyState()
     except RuntimeError:
         return False, model
 
@@ -435,9 +435,9 @@ if __name__ == '__main__':
     parameters = get_parameters(0, datapath)
     log = False
 
-    maier_data = pd.read_csv("~/PhD/malaria_lipid_models/Datasets/maierframe_muMolar.tsv",
+    maier_data = pd.read_csv("~/malaria_lipid_models/Datasets/maierframe_muMolar.tsv",
                              sep="\t", index_col=0)  # maier dataset
-    meta = pd.read_csv("~/PhD/malaria_lipid_models/Datasets/metabolites_muMolar.tsv",
+    meta = pd.read_csv("~/malaria_lipid_models/Datasets/metabolites_muMolar.tsv",
                        sep="\t", index_col=0)
 
     if name.startswith('SS'):
@@ -454,8 +454,9 @@ if __name__ == '__main__':
                     {'model': model, 't_data': t_data,
                      'weight': 0})
 
-    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-8, 'maxiter': 100,
-                'tolfacupx': 1.0e9, 'popsize': 200}
+    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-8, 'maxiter': 1000,
+                'tolfacupx': 1.0e9, 'popsize_factor': 3
+                }
 
     score_para = esta.run(method='cma', n_lhs=4, run_id=run_id,
                           cma_sigma0=1.0e-2,
