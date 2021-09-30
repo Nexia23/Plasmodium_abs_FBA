@@ -47,7 +47,7 @@ def get_parameters(self_para_adjust, datapath_p):
     return parametas
 
 
-def mk_bounds(parameter_names, log):
+def mk_bounds(parameter_names, log: bool):
 
     param_bound = {}
 
@@ -92,6 +92,11 @@ def metabolomics_test_dict(model, metabolites, timepoints=[]):
         tellurium model class, used to get species names of the model
     metabolites: pandas.DataFrame
         DataFrame of literature values except Alex Maier
+    timepoints: list
+        specifies time points for which data stored in test_dict
+    -----------
+    returns new_dict: dict
+        test dict with correct data, each data literature value and it's std
     """
     # Factor to change DataFrame unit[partical number/cell] to [nmol/10^9 cells]
     # alex_factor = 602214.076  # avo/(10^9 cells and 10^9 nmol/mol
@@ -382,8 +387,8 @@ def steady_state_calc(model, parameter: dict):
     return score, model
 
 
-def objective_SS_function(parameter: dict, model, t_data: dict, process_id,
-                          weight=1):
+def objective_steady_state_function(parameter: dict, model, t_data: dict, process_id,
+                                    weight=1):
 
     ss_found, model_in_SS = steady_state_calc(model, parameter)
     if not ss_found:
@@ -435,15 +440,15 @@ if __name__ == '__main__':
     parameters = get_parameters(0, datapath)
     log = False
 
-    maier_data = pd.read_csv("~/malaria_lipid_models/Datasets/maierframe_muMolar.tsv",
+    maier_data = pd.read_csv("Datasets/maierframe_muMolar.tsv",
                              sep="\t", index_col=0)  # maier dataset
-    meta = pd.read_csv("~/malaria_lipid_models/Datasets/metabolites_muMolar.tsv",
+    meta = pd.read_csv("Datasets/metabolites_muMolar.tsv",
                        sep="\t", index_col=0)
 
     if name.startswith('SS'):
 
         t_data = mke_test_dict(model, maier_data, meta, timepoints=["troph"])
-        objective = objective_SS_function
+        objective = objective_steady_state_function
 
     else:
         t_data = mke_test_dict(model, maier_data, meta)
@@ -452,15 +457,19 @@ if __name__ == '__main__':
     esta.initialize(objective,
                     parameters,
                     {'model': model, 't_data': t_data,
-                     'weight': 0})
+                     'weight': 0
+                     }
+                    )
 
-    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-8, 'maxiter': 1000,
-                'tolfacupx': 1.0e9, 'popsize_factor': 3
+    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-10, 'maxiter': 1300,
+                'tolfacupx': 1.0e9, 'popsize': 200
                 }
 
     score_para = esta.run(method='cma', n_lhs=4, run_id=run_id,
                           cma_sigma0=1.0e-2,
-                          optimizer_args=opt_args)
+                          optimizer_args=opt_args,
+                          multiprocess_lhs=False
+                          )
 
     with open(datapath + timestr + run_id + 'whole_paras.txt', 'wb') as handle:
         pickle.dump(score_para, handle)

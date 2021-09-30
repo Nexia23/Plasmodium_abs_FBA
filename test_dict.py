@@ -85,9 +85,9 @@ def mke_test_dict(model, timepoints=["uninfected", "ring", "troph", "schizont"])
     metabolites: pandas.DataFrame
         DataFrame of literature values except Alex Maier
     """
-    maierframe = pd.read_csv("~/PhD/malaria_lipid_models/Datasets/maierframe_muMolar.tsv",
+    maierframe = pd.read_csv("~/malaria_lipid_models/Datasets/maierframe_muMolar.tsv",
                              sep="\t", index_col=0)  # maier dataset
-    metabolites = pd.read_csv("~/PhD/malaria_lipid_models/Datasets/metabolites_muMolar.tsv",
+    metabolites = pd.read_csv("~/malaria_lipid_models/Datasets/metabolites_muMolar.tsv",
                        sep="\t", index_col=0)
 
     long_name_to_maier = {
