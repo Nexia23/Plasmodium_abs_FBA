@@ -1,7 +1,7 @@
 # Antimony code for ode system of phospholipid synthesis 
  
 # Definition of time variable
-t := Time;
+t := time;
 
 # Unit definitions
 unit muM = 1e-6 * mole * litre^-1;

@@ -461,7 +461,7 @@ if __name__ == '__main__':
                      }
                     )
 
-    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-10, 'maxiter': 1300,
+    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-10, 'maxiter': 3300,
                 'tolfacupx': 1.0e9, 'popsize': 200
                 }
 
