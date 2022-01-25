@@ -1,0 +1,8 @@
+#!/bin/sh
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=SiCore
+passed_id=$1
+echo "start estimation run on $(hostname) $passed_id"
+python3 cma_estimation.py 8 $passed_id
