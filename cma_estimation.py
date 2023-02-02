@@ -1,4 +1,3 @@
-import pickle
 import json
 import time
 import os
@@ -22,7 +21,7 @@ def get_parameters(self_para_adjust, datapath_p):
         for multiple runs of estimator or when parameters self adjusted
         determines which parameter txt file used
     datapath_p: string
-        path to parameter .txt file, pickled dict file keys=names, values=value
+        path to parameter .txt file, jsond dict file keys=names, values=value
     ---------
     returns p_keys: list
         list of parameter names to be fitted
@@ -34,53 +33,18 @@ def get_parameters(self_para_adjust, datapath_p):
             os.remove(datapath_p + "whole_paras.txt")
 
         with open(datapath_p + 'whole_paras.txt', 'rb') as handle:
-            parametas = pickle.loads(handle.read())
+            parametas = json.loads(handle.read())
 
     except FileNotFoundError:
         print('Using to_fit_parameter_set')
         try:
             with open(datapath_p + 'to_fit_para.txt', 'rb') as handle:
-                parametas = pickle.loads(handle.read())            
+                parametas = json.loads(handle.read())            
         except:
             with open(datapath_p + 'to_fit_para.txt', 'r') as handle:
                 parametas = json.loads(handle.read())
 
     return parametas
-
-
-def mk_bounds(parameter_names, log: bool):
-
-    param_bound = {}
-
-    # here define bounds for the fitted params by their type
-    for key in parameter_names:
-        if key.startswith('E'):  # enzyme number bounds
-            if log:
-                param_bound[key] = (-7, 6, log)  # for log space
-            else:
-                param_bound[key] = (0, 1e6, log)  # for linear space
-        if key.startswith('k'):  # mass action k bounds
-            if log:
-                param_bound[key] = (-10, 13, log)  # for log space
-            else:
-                param_bound[key] = (0, 1e13, log)  # for linear space
-        if key.startswith('t12'):  # sigmoid half time, want betw 20 & 35h
-            if log:
-                param_bound[key] = (1.3, 5.1, log)
-            else:
-                param_bound[key] = (20 * 3600, 40 * 3600, log)
-        if key.startswith('cm'):  # sigmoid max and min what do i want?
-            if log:
-                param_bound[key] = (-7, 6, log)
-            else:
-                param_bound[key] = (0, 1e6, log)
-        if key.startswith('s_'):  # sigmoid slope, in s
-            if log:
-                param_bound[key] = (-3, 4.5, log)
-            else:
-                param_bound[key] = (0, 36000, log)
-
-    return param_bound
 
 
 def metabolomics_test_dict(model, metabolites, timepoints=[]):
@@ -423,6 +387,7 @@ if __name__ == '__main__':
 
     entry = sys.argv[1]
     run_id = sys.argv[2]
+    timepoint_lst = list(sys.argv[3])
     print(options)
 
     # entry = input("Name of the model to use: ")
@@ -435,22 +400,32 @@ if __name__ == '__main__':
 
     print(name)
 
-    new = tester_Fit_Model.Fit_Model(name)
-    new.mke_test_dict()
+    to_fit_model = tester_Fit_Model.Fit_Model(name)
+    tester_Fit_Model.timepoints = timepoint_lst
+    to_fit_model.mke_test_dict()
 
-    datapath = new.datapath
+    datapath = to_fit_model.datapath
     timestr = time.strftime("%Y%m%d-%H:%M:%S")
 
-    parameters = get_parameters(0, datapath)
+    to_fit_model.load_parameters(0)
+
+    ps = {'PS': 500.0}
+    to_fit_model.extra_species_amount = ps
+
+    ps_test = {'Phosphatidylserine': {'values': [[500.0]],
+               'std': [[200.0]]}
+               }
+    to_fit_model.set_species_test_dict(ps_test)    
 
     esta = Estimator.ParameterEstimator()
-    esta.initialize(new.objective,
-                    parameters
+    esta.initialize(to_fit_model.objective,
+                    to_fit_model.parameters
                     )
 
-    new.set_settings()
+    to_fit_model.set_settings()
 
-    score_para = esta.run(**new.settings)
-
-    with open(datapath + timestr + run_id + 'whole_paras.txt', 'wb') as handle:
-        pickle.dump(score_para, handle)
+    score_para = esta.run(**to_fit_model.settings)
+    score_para.append(timepoint_lst)
+    
+    with open(datapath + timestr + run_id + 'whole_paras.json', 'w') as handle:
+        json.dump(score_para, handle, indent=4)

@@ -27,12 +27,14 @@ class Fit_Model:
         '''
 
         self.compare_ar = None
-        self.timepoints = ["uninfected", "ring", "troph", "schizont"]
+        self.timepoints = None # ["uninfected", "ring", "troph", "schizont"]
         self.observables = []  # str list with names of the observables
 
         self.test_data_dict = {}  # dict with lit. data
         self.test_data_names = None  # str list of molecules in test_data
-        self.parameters = None  # current parameter set of the model 
+        self.parameters = None  # current parameter set of the model, else dict{Parameter Name : value} 
+        
+        self.set_extra_species_amount = {} # species value that is set to specific value at the beginnig of simulation
 
         self.residuals = None  # maximum likelyhood residuals, distance from simulation data to lit.
         self.bias_ar = None  # str list names of molecules that have bias: here their residuals count more 
@@ -43,7 +45,7 @@ class Fit_Model:
         else:
             self.objective = self.objective_function
 
-    def set_parameters(self, self_para_adjust: bool):
+    def load_parameters(self, self_para_adjust: bool):
         """
         Function to get the parameters, which are fitted with their boundaries
         ----------
@@ -56,12 +58,12 @@ class Fit_Model:
             path to parameter .txt file, json dict file keys=names, values=value
         ---------
         """
-        try:
-            if self_para_adjust == 1:
-                with open(self.datapath + 'whole_paras.txt', 'rb') as handle:
-                    parameters = pickle.loads(handle.read())
 
-        except FileNotFoundError:
+        if self_para_adjust == 1:
+            with open(self.datapath + 'whole_paras.txt', 'rb') as handle:
+                parameters = json.loads(handle.read())
+
+        else:
             print('Using to_fit_parameter_set')
             with open(self.datapath + 'to_fit_para.txt', 'r') as handle:
                 parameters = json.loads(handle.read())
@@ -81,7 +83,7 @@ class Fit_Model:
         metabolites: pandas.DataFrame
             DataFrame of literature values except Alex Maier
         """
-        if self.model_name.startswith('SS'):
+        if self.timepoints is None and self.model_name.startswith('SS'):
             self.timepoints = ["troph"]
 
         maierframe = pd.read_csv("Datasets/maierframe_muMolar.tsv",
@@ -205,18 +207,45 @@ class Fit_Model:
         self.data_ar = np.array(self.data_ar)
         self.data_std = np.array(self.data_std)
 
-    def set_settings(self, cma_options: dict = {}):
+    def set_settings(self, estimation_options: dict = {}, 
+                     cma_options: dict = {}):
 
         opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-10, 'maxiter': 3300,
                     'tolfacupx': 1.0e9, 'popsize': 200
                     }
         opt_args.update(cma_options)
 
-        self.settings = {"method": 'cma',
-                         "n_lhs": 4,
-                         "run_id": 0,
-                         "cma_sigma0": 1.0e-2,
-                         "optimizer_args": opt_args}
+        settings = {"method": 'cma',
+                    "n_lhs": 4,
+                    "run_id": 0,
+                    "cma_sigma0": 1.0e-2,
+                    "optimizer_args": opt_args}
+        settings.update(estimation_options)    
+                
+        self.settings = settings
+
+    def set_species_test_dict(self, values_dict: dict):
+        '''
+        dict has shape {species:{values:[], std:[]}}
+        '''
+        data_ar = list(self.data_ar)
+        data_std = list(self.data_std)
+        observables = list(self.observables)
+
+        for species in values_dict.keys():
+            for i, key in enumerate(self.timepoints):
+                values = values_dict[species]['values'][i]
+                stds = values_dict[species]['std'][i]
+
+                data_ar.extend(values)
+                self.data_index_ar.extend([self.data_index_ar[-1]+1]
+                                          * len(values))
+                data_std.extend(stds)
+            observables.append(species)
+
+        self.observables = np.array(observables)
+        self.data_ar = np.array(data_ar)
+        self.data_std = np.array(data_std)
 
     def steady_state_calc(self):
 
@@ -246,8 +275,8 @@ class Fit_Model:
         # summation of distances of the same molecule at the same timepoint
         # len() == len(data_ar) -> value for each datapoint
         residuals_time = np.bincount(index, residuals_all)
-        # summation of every timepoint for the same molecule -> len == len(observables)
-        self.residuals = np.nansum(residuals_time.reshape(len(self.timepoints), 12, order='F'), axis=0)
+        # summation of every timepoint for the same molecule -> len == len(observables) here 12
+        self.residuals = np.nansum(residuals_time.reshape(len(self.timepoints), len(self.observables), order='F'), axis=0)
 
     def add_bias(self):
         '''
@@ -258,7 +287,7 @@ class Fit_Model:
         bias = np.in1d(self.observables, self.bias_ar)
         # where true value doubled
         self.residuals[bias] = self.residuals[bias] * 2
-        # just factor because of fun
+        # just factor for better refinement
         self.residuals = self.residuals * 10
 
     def objective_steady_state_function(self, parameters, process_id, weight=1):
@@ -314,13 +343,15 @@ class Fit_Model:
         return objective_value  # + score_zero + score_growth
 
     def set_model_parameters(self, excluded_values=[]):
-        no_names = excluded_values
-        for param_id in self.parameters.keys():
-            if any(x in param_id for x in no_names):
+        parameters = self.parameters
+        parameters.update(self.set_extra_species_amount)
+
+        for param_id in parameters.keys():
+            if any(x in param_id for x in excluded_values):
                 continue
             else:
                 try:
-                    self.model[param_id] = self.parameters[param_id]
+                    self.model[param_id] = parameters[param_id]
                     # print(param_id)
                     # print(model[param_id])
                 except RuntimeError:
@@ -328,7 +359,7 @@ class Fit_Model:
                 except TypeError:
                     # print('try to set {0} to {1}'.format(model[param_id]),params[param_id])
                     print(format(self.model[param_id]))  #
-                    print(format(self.params[param_id]))
+                    print(format(parameters[param_id]))
 
     def simulation_run(self):
 
@@ -340,7 +371,6 @@ class Fit_Model:
         return sim_results
 
     def simulation_p_to_compare_ar(self, simulation_result_p):
-        # TODO : all time points are used but what if looking at specific time
         s_panda = simulation_result_p
 
         times = {'uninfected': 2 * 3600,
