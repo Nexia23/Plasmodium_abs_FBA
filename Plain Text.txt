@@ -1,0 +1,12 @@
+#!/bin/bash
+
+value=True
+
+while value:
+do
+	xdotool mousemove 0 0 mousemove restore
+	sleep 60
+	if output=$(ps -p "$pid")
+	then
+  		value=False
+done

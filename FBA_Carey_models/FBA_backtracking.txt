@@ -1,0 +1,17 @@
+for mapping the ODE and the GEM need same annotation of the metabolites and reactions
+
+metas will be probably manuel and reactions the mapped metabolites can be used.
+-> for iPfa it kinda is already done
+
+next is lump_prep.m
+Function to irreversibilize model and sets the objective to 'total flux'
+should not be too hard to implement just understanding is lacking
+
+after they use bktr_run.m
+
+here functionalities of cobra are used like 
+converToIrreversible()
+converIrrevFluxDistribution()
+see if they are in cobra.py
+
+after it will be finding reactions and add fluxes for leak flux of specific metabolite

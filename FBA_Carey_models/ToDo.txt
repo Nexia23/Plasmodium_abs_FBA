@@ -1,0 +1,18 @@
+Questions:
+
+What unit is the biomass function and of the stoichiometric factors? Maybe mmol/ g DW?
+Why is the ER not a comparment?
+Why these stoichiometric coeffiecents for the lipid species?
+
+Knowledge:
+ATP Carey = 60 vs iPFA ATP = 21.406
+Lipids aggreated in one species(bm_lipids) in the biomass function.
+The bm_lipids species reaction:
+0.2 all_apg_c + 4.0 all_dgl_c + 35.0 all_pc_c + 18.0 all_pe_c + 1.5 all_pg_c + 4.25 all_pi_c + 0.519 chsterol_c + 14.0 sphmyln_c + 1.5 tag_c --> bm_lipid_c
+Can cobra py read json files? -> Yes, load_json_model
+
+ToDo:
+Backtracking paper read of Katja
+Write backtracking routine .py
+Answer Questions
+Answer Anas questions
