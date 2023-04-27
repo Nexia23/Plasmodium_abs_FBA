@@ -2,7 +2,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --partition=SiCore
+#SBATCH --partition=ThbpCl
+#SBATCH -w, --nodelist=marvin
 passed_id=$1
 echo "start estimation run on $(hostname) $passed_id"
 python3 cma_estimation.py 8 $passed_id

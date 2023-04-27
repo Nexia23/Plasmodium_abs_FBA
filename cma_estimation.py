@@ -2,10 +2,11 @@ import pickle
 import json
 import time
 import os
-import roadrunner as rr
+
 import tellurium as te
 import pandas as pd
 import numpy as np
+import tester_Fit_Model
 import sys
 sys.path.insert(0, '../Parameter_Sampler/')
 import Estimator
@@ -423,6 +424,7 @@ if __name__ == '__main__':
     entry = sys.argv[1]
     run_id = sys.argv[2]
     print(options)
+
     # entry = input("Name of the model to use: ")
 
     try:
@@ -431,45 +433,24 @@ if __name__ == '__main__':
     except:
         name = str(entry)
 
-    modelpath = "model_files/" + name + ".atm"
-    datapath = "CMA_files/" + name + "/"
+    print(name)
+
+    new = tester_Fit_Model.Fit_Model(name)
+    new.mke_test_dict()
+
+    datapath = new.datapath
     timestr = time.strftime("%Y%m%d-%H:%M:%S")
 
-    model = te.loada(modelpath)
-    model.resetAll()
     parameters = get_parameters(0, datapath)
-    log = False
 
-    maier_data = pd.read_csv("Datasets/maierframe_muMolar.tsv",
-                             sep="\t", index_col=0)  # maier dataset
-    meta = pd.read_csv("Datasets/metabolites_muMolar.tsv",
-                       sep="\t", index_col=0)
-
-    if name.startswith('SS'):
-
-        t_data = mke_test_dict(model, maier_data, meta, timepoints=["troph"])
-        objective = objective_steady_state_function
-
-    else:
-        t_data = mke_test_dict(model, maier_data, meta)
-        objective = objective_function
     esta = Estimator.ParameterEstimator()
-    esta.initialize(objective,
-                    parameters,
-                    {'model': model, 't_data': t_data,
-                     'weight': 0
-                     }
+    esta.initialize(new.objective,
+                    parameters
                     )
 
-    opt_args = {'tolx': 1.0e-8, 'tolfun': 1.0e-10, 'maxiter': 3300,
-                'tolfacupx': 1.0e9, 'popsize': 200
-                }
+    new.set_settings(run_id)
 
-    score_para = esta.run(method='cma', n_lhs=4, run_id=run_id,
-                          cma_sigma0=1.0e-2,
-                          optimizer_args=opt_args,
-                          multiprocess_lhs=False
-                          )
+    score_para = esta.run(**new.settings)
 
     with open(datapath + timestr + run_id + 'whole_paras.txt', 'wb') as handle:
         pickle.dump(score_para, handle)
