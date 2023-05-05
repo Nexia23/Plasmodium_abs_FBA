@@ -1,0 +1,9 @@
+{
+  "spellcheck": true,
+  "showFrontmatter": true,
+  "alwaysUpdateLinks": true,
+  "readableLineLength": true,
+  "spellcheckLanguages": [
+    "en-US"
+  ]
+}
