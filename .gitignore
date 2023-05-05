@@ -118,3 +118,4 @@ testfile.txt
 /outcmaes
 /.ipynb_checkpoints
 /CMA_files/noV_cPL_conc/.ipynb_checkpoints
+*.out

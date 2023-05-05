@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "9c191f6b01dc802f",
+    "type": "split",
+    "children": [
+      {
+        "id": "a3e4ccefc32f2a77",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75dc0c069c09fbc2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "49722ecf5bfae7f6",
+    "type": "split",
+    "children": [
+      {
+        "id": "8499d14b04686b00",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ba1fe2f13abbad5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ce225cbae57521d5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "11e534e7bb12de56",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "529affa6798b001d",
+    "type": "split",
+    "children": [
+      {
+        "id": "75c0901f50fed9ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d601e362798f014",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "47650c237a05ef82",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ff583480b6f79b97",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b7c7acea25472629",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "75dc0c069c09fbc2",
+  "lastOpenFiles": [
+    "lipid_comp_inprecent_inPMsep.png",
+    "Pasted image 20230413172630.png",
+    "Pasted image 20230413180026.png",
+    "Pasted image 20230414095611.png",
+    "Pasted image 20230425151831.png",
+    "Pasted image 20230425152400.png",
+    "PM Asymmetry Model.md",
+    "Pasted image 20230426160005.png",
+    "Pasted image 20230426155923.png",
+    "Lipid Production Model.md",
+    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+    "Lipid_comp_2004_trpoh_schizont.png",
+    "pathway_lip_prod.png",
+    "Pasted image 20230503134454.png",
+    "Arashiki2016 An Unrecognized Function of Cholesterol.md",
+    "().md",
+    "Table_RPMI1640_content.pdf",
+    "RNA_forth_2012.png.md",
+    "FBA - Plasmodium flaciparum.md",
+    "diff_asym_irbc_rbc_tabel.md",
+    "2023-04-14.md",
+    "2023-04-13.md",
+    "2023-04-14",
+    "Pasted image 20230413172342.png.md",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "Untitled 2.canvas",
+    "Note of the day.md",
+    "2023-04-05.md"
+  ]
+}
