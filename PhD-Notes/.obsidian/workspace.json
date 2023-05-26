@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "75dc0c069c09fbc2",
+            "id": "00d727ae0cdf4559",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+                "file": "FBA - Plasmodium flaciparum.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,6 +65,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "7382bdfd63e1cd7e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -86,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+                "file": "FBA - Plasmodium flaciparum.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+                "file": "FBA - Plasmodium flaciparum.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md"
+                "file": "FBA - Plasmodium flaciparum.md"
               }
             }
           }
@@ -147,27 +155,30 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "75dc0c069c09fbc2",
+  "active": "00d727ae0cdf4559",
   "lastOpenFiles": [
-    "lipid_comp_inprecent_inPMsep.png",
-    "Pasted image 20230413172630.png",
-    "Pasted image 20230413180026.png",
-    "Pasted image 20230414095611.png",
-    "Pasted image 20230425151831.png",
-    "Pasted image 20230425152400.png",
-    "PM Asymmetry Model.md",
-    "Pasted image 20230426160005.png",
-    "Pasted image 20230426155923.png",
-    "Lipid Production Model.md",
-    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
-    "Lipid_comp_2004_trpoh_schizont.png",
-    "pathway_lip_prod.png",
-    "Pasted image 20230503134454.png",
-    "Arashiki2016 An Unrecognized Function of Cholesterol.md",
-    "().md",
-    "Table_RPMI1640_content.pdf",
-    "RNA_forth_2012.png.md",
+    "iPfal-X Model Carey et al..md",
     "FBA - Plasmodium flaciparum.md",
+    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+    "ipfa_lipid_prod.md",
+    "Arashiki2016 An Unrecognized Function of Cholesterol.md",
+    "Table_RPMI1640_content.pdf.md",
+    "Table_RPMI1640_content.pdf",
+    "Lipid_comp_2004_trpoh_schizont.png",
+    "Ions_RPMI1640.png",
+    "fatty_acid_comp_in_per_cent_1991.png",
+    "control_coeff_scaled_conc_lip_prod.png",
+    "control_coeff_lip_prod.png",
+    "Amino_acid_forth_2012.png",
+    "PNGS/plot_score_lip_prod.png",
+    "PNGS/pathway_lip_prod.png",
+    "PNGS/lipid_comp_inprecent_inPMsep.png",
+    "PNGS/ipfa_glucose_uptake_lactose_secretion.png",
+    "PNGS",
+    "PM Asymmetry Model.md",
+    "Lipid Production Model.md",
+    "().md",
+    "RNA_forth_2012.png.md",
     "diff_asym_irbc_rbc_tabel.md",
     "2023-04-14.md",
     "2023-04-13.md",

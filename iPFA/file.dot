@@ -1,0 +1,140 @@
+digraph { 
+C00346 [shape="ellipse",style="filled",color="darkolivegreen2"label="Ethanolamine phosphate"];
+C13482 [shape="ellipse",style="filled",color="darkolivegreen2"label="Phosphodimethylethanolamine"];
+Outside [shape="ellipse",style="filled",color="darkolivegreen2"label="Outside"];
+C00189 [shape="ellipse",style="filled",color="darkolivegreen2"label="Ethanolamine"];
+C00416 [shape="ellipse",style="filled",color="darkolivegreen2"label="Phosphatidate"];
+C00570 [shape="ellipse",style="filled",color="darkolivegreen2"label="CDP-ethanolamine"];
+C01210 [shape="ellipse",style="filled",color="darkolivegreen2"label="N-Methylethanolamine phosphate"];
+C00157 [shape="ellipse",style="filled",color="darkolivegreen2"label="Phosphatidylcholine"];
+C00641 [shape="ellipse",style="filled",color="darkolivegreen2"label="1,2-Diacyl-sn-glycerol"];
+C00269 [shape="ellipse",style="filled",color="darkolivegreen2"label="CDP-diacylglycerol"];
+C00065 [shape="ellipse",style="filled",color="darkolivegreen2"label="L-Serine"];
+C02737 [shape="ellipse",style="filled",color="darkolivegreen2"label="Phosphatidylserine"];
+C00350 [shape="ellipse",style="filled",color="darkolivegreen2"label="Phosphatidylethanolamine"];
+C00114 [shape="ellipse",style="filled",color="darkolivegreen2"label="Choline"];
+C00588 [shape="ellipse",style="filled",color="darkolivegreen2"label="Choline phosphate"];
+C00307 [shape="ellipse",style="filled",color="darkolivegreen2"label="CDP-choline"];
+R02055 [shape="box",style="filled",color="darkslategray2"label="R02055
+ stoichiometry_Flux = -0.0093
+ Ring_Flux = -0.0186
+ Trophozoite_Flux = -0.0179
+ Schizont_Flux = -0.0209"];
+R02037 [shape="box",style="filled",color="darkslategray2"label="R02037
+ stoichiometry_Flux = 0.0000
+ Ring_Flux = 0.0000
+ Trophozoite_Flux = 0.0000
+ Schizont_Flux = 0.0000"];
+R06868 [shape="box",style="filled",color="darkslategray2"label="R06868
+ stoichiometry_Flux = 0.0000
+ Ring_Flux = 0.0000
+ Trophozoite_Flux = 0.0000
+ Schizont_Flux = 0.0000"];
+R06869 [shape="box",style="filled",color="darkslategray2"label="R06869
+ stoichiometry_Flux = 0.0000
+ Ring_Flux = 0.0000
+ Trophozoite_Flux = 0.0000
+ Schizont_Flux = 0.0000"];
+EtOHamine_in [shape="box",style="filled",color="darkslategray2"label="EtOHamine_in"];
+L_Serine_in [shape="box",style="filled",color="darkslategray2"label="L_Serine_in"];
+Choline_in [shape="box",style="filled",color="darkslategray2"label="Choline_in"];
+R01800 [shape="box",style="filled",color="darkslategray2"label="R01800
+ stoichiometry_Flux = -0.0083
+ Ring_Flux = -0.0167
+ Trophozoite_Flux = -0.0158
+ Schizont_Flux = -0.0181"];
+R01468 [shape="box",style="filled",color="darkslategray2"label="R01468
+ stoichiometry_Flux = 0.0157
+ Ring_Flux = 0.0314
+ Trophozoite_Flux = 0.0294
+ Schizont_Flux = 0.0333"];
+R01021 [shape="box",style="filled",color="darkslategray2"label="R01021
+ stoichiometry_Flux = 0.0151
+ Ring_Flux = 0.0301
+ Trophozoite_Flux = 0.0287
+ Schizont_Flux = 0.0302"];
+R02038 [shape="box",style="filled",color="darkslategray2"label="R02038
+ stoichiometry_Flux = 0.0157
+ Ring_Flux = 0.0314
+ Trophozoite_Flux = 0.0294
+ Schizont_Flux = 0.0333"];
+R01890 [shape="box",style="filled",color="darkslategray2"label="R01890
+ stoichiometry_Flux = 0.0151
+ Ring_Flux = 0.0301
+ Trophozoite_Flux = 0.0287
+ Schizont_Flux = 0.0302"];
+R02057 [shape="box",style="filled",color="darkslategray2"label="R02057
+ stoichiometry_Flux = 0.0157
+ Ring_Flux = 0.0314
+ Trophozoite_Flux = 0.0294
+ Schizont_Flux = 0.0333"];
+R01321 [shape="box",style="filled",color="darkslategray2"label="R01321
+ stoichiometry_Flux = 0.0136
+ Ring_Flux = 0.0272
+ Trophozoite_Flux = 0.0225
+ Schizont_Flux = 0.0260"];
+R01312 [shape="box",style="filled",color="darkslategray2"label="R01312"];
+R02052 [shape="box",style="filled",color="darkslategray2"label="R02052"];
+Serine_to_EtOHamine [shape="box",style="filled",color="darkslategray2"label="Serine_to_EtOHamine"];
+R01799 [shape="box",style="filled",color="darkslategray2"label="R01799
+ stoichiometry_Flux = -0.0051
+ Ring_Flux = -0.0135
+ Trophozoite_Flux = -0.0126
+ Schizont_Flux = -0.0149"];
+R02239 [shape="box",style="filled",color="darkslategray2"label="R02239
+ stoichiometry_Flux = 0.0000
+ Ring_Flux = 0.0000
+ Trophozoite_Flux = 0.0000
+ Schizont_Flux = 0.0000"];
+R02240 [shape="box",style="filled",color="darkslategray2"label="R02240
+ stoichiometry_Flux = -0.0051
+ Ring_Flux = -0.0135
+ Trophozoite_Flux = -0.0126
+ Schizont_Flux = -0.0149"];
+C02737->R02055[color=Gold];
+R02055->C00350;
+C00346->R02037[color=LimeGreen];
+R02037->C01210;
+C01210->R06868[color=LimeGreen];
+R06868->C13482;
+C13482->R06869[color=LimeGreen];
+R06869->C00588;
+EtOHamine_in->C00189;
+L_Serine_in->C00065;
+Choline_in->C00114;
+C00269->R01800[color=Red];
+C00065->R01800[color=Red];
+R01800->C02737;
+C00189->R01468[color=Gold];
+R01468->C00346;
+C00114->R01021[color=Red];
+R01021->C00588;
+C00346->R02038[color=Gold];
+R02038->C00570;
+C00588->R01890[color=Red];
+R01890->C00307;
+C00570->R02057[color=Red];
+C00641->R02057[color=Red];
+R02057->C00350;
+C00307->R01321[color=Red];
+C00641->R01321[color=Red];
+R01321->C00157;
+C00157->R01312[color=Red];
+R01312->C00641;
+R01312->C00588;
+C00350->R02052[color=Red];
+R02052->C00641;
+R02052->C00346;
+C00065->Serine_to_EtOHamine[color=Red];
+Serine_to_EtOHamine->C00189;
+C00416->R01799[color=Red];
+R01799->C00269;
+C00416->R02239[color=Red];
+R02239->C00641;
+C00641->R02240[color=Red];
+R02240->C00416;
+}R02055 [shape="box",style="filled",color="darkslategray2"label="R02055
+ stoichiometry_Flux = -0.0093
+ Ring_Flux = -0.0186
+ Trophozoite_Flux = -0.0179
+ Schizont_Flux = -0.0209"];

@@ -6,7 +6,7 @@ Basic enzyme information:
 
 PS exposure is promoted by activation of scramblase activity caused by an increase in intracellular Ca2+ concentrations. #PS
 
-Scramblase bidirectionally translocates a wide variety of phospholipids in Ca2+-dependent and ATP-independent manners. #scramblase 
+Scramblase bidirejwodke/corona_model/-/ci/editor?branch_name=master&tab=1ctionally translocates a wide variety of phospholipids in Ca2+-dependent and ATP-independent manners. #scramblase 
 ## Summary for modelling #asymmetry_model
 - PLSCR1 seems to be an important scramblase for the #RBC plasma membrane #PM
 - activated by #Ca²⁺

@@ -2,6 +2,29 @@
 ## Model Description
 Totally new build using FASTA data. The GEM iPfa presents an unbiased bottom-up reconstruction and an updated database of _P_. _falciparum_ metabolism.
 Since steady state assumption no accumulation of hemozoin or Ca²⁺, in turn also means no lipid accumulate.
+## Lipid production 
+#ipfa_lipid_prod
+- PC produced by R01321_r (CDP-choline + 1,2-Diacyl-sn-glycerol), ~94% biomass rest into PS
+- PE produced by R02057_R02038_r (lumped reaction,CTP + Ethanolamine phosphate + 1,2-Diacyl-sn-glycerol), then biomass
+- PS produced by R07377_r (L-Serine + Phosphatidylcholine) incorrect, then biomass
+- Cholesterol imported by T_c_to_e_C00187, then biomass
+- Hexadecanoic acid produced by R01280_c (produces: ATP + CoA + H⁺ + Hexadecanoic acid), then biomass
+- Sphingomyelin produced by R01891_c (N-Acylsphingosine + CDP-choline), then biomass
+- TAG imported by T_c_to_e_C00422, then biomass
+- (9Z)-Octadecenoic acid imported by T_c_to_e_C00712,  then biomass
+- Octadecanoic acid imported by T_c_to_e_C01530,  then biomass
+- Tetradecanoic acid imported by T_c_to_e_C06424,  then biomass
+- DAG 1,2-Diacyl-sn-glycerol, 
+	Production:
+	- ~97% imported T_c_to_e_C00641, 
+	- 3% R03435_c (H2O + 1-Phosphatidyl-D-myo-inositol 4,5-bisphosphate)
+	Consumption:
+	- ~2% biomass
+	- ~13% to phosphatidate
+	- ~85% transport to Endoplasmic_reticulum (of those 70% to PC, 30% to PE)
+- Phosphatidate used to produce CDP-diacylglycerol
+- Cardiolipin produced by R02030_c (CDP-diacylglycerol + Phosphatidylglycerol). 50% into biomass other 50% into production of Phosphatidylglycerol(weird circle)
+- Phosphatidylglycerol (weird circle) used to produce Cardiolipin (one+CDP-diacylglycerol) produced by cardiolipin degradation (two)
 ## Supporting information [here](https://doi.org/10.1371/journal.pcbi.1005397.s001)
 Data used in the iPfa model important to know where it is coming from. 
 To calculate these values they assumed a cell dry-weight for P. falciparum of 1.05•10⁻¹¹ gDW/cell according to Forth T. [Metabolic Systems Biology of the Malaria Parasite](https://etheses.whiterose.ac.uk/3739/1/T_Forth_Corrected_Thesis.pdf). 2012, which represents around 30% of the erythrocyte dry-weight - Mysliwski A, Lass P. Increase of size and dry mass of mouse erythrocytes depending on age of donors. 1985 PMID: 3974304. 
