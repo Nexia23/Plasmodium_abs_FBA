@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FBA - Plasmodium flaciparum.md",
+                "file": "iPfal-X Model Carey et al..md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "FBA - Plasmodium flaciparum.md",
+                "file": "iPfal-X Model Carey et al..md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "FBA - Plasmodium flaciparum.md",
+                "file": "iPfal-X Model Carey et al..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "FBA - Plasmodium flaciparum.md"
+                "file": "iPfal-X Model Carey et al..md"
               }
             }
           }
@@ -157,9 +157,9 @@
   },
   "active": "00d727ae0cdf4559",
   "lastOpenFiles": [
+    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
     "iPfal-X Model Carey et al..md",
     "FBA - Plasmodium flaciparum.md",
-    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
     "ipfa_lipid_prod.md",
     "Arashiki2016 An Unrecognized Function of Cholesterol.md",
     "Table_RPMI1640_content.pdf.md",
