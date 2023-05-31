@@ -8,12 +8,24 @@
         "type": "tabs",
         "children": [
           {
-            "id": "00d727ae0cdf4559",
+            "id": "3bdcc5055b41e898",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "iPfal-X Model Carey et al..md",
+                "file": "6.6.2023 Oberseminar.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a805b47555f6a8ca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FBA - Plasmodium falciparum.md",
                 "mode": "source",
                 "source": false
               }
@@ -49,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Flaciparum",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "iPfal-X Model Carey et al..md",
+                "file": "6.6.2023 Oberseminar.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "iPfal-X Model Carey et al..md",
+                "file": "6.6.2023 Oberseminar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "iPfal-X Model Carey et al..md"
+                "file": "6.6.2023 Oberseminar.md"
               }
             }
           }
@@ -155,11 +167,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "00d727ae0cdf4559",
+  "active": "3bdcc5055b41e898",
   "lastOpenFiles": [
+    "FBA - Plasmodium falciparum.md",
+    "6.6.2023 Oberseminar.md",
     "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
     "iPfal-X Model Carey et al..md",
-    "FBA - Plasmodium flaciparum.md",
     "ipfa_lipid_prod.md",
     "Arashiki2016 An Unrecognized Function of Cholesterol.md",
     "Table_RPMI1640_content.pdf.md",

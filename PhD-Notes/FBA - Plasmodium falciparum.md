@@ -12,6 +12,7 @@ Supporting information [here](https://doi.org/10.1371/journal.pcbi.1005397.s001)
 #### 2. iPfal17-21 #Carey2017 et al.
 
 ## Comparison Table 
+
 |  | ipfal21 | ipfa |
 | -------- | -------- | -------- |
 | MetnetX| no, problem with exchange reaction definitions| yes, quick overview analysis possible|

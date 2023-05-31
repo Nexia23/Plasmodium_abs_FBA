@@ -1,0 +1,27 @@
+.reveal {
+  font-size: 1em;
+}
+
+.reveal table {
+  font-size: 1.0em;
+}
+
+/* Apply styles to containing divs for slides */
+.slides {
+    /* Set overflows to allow for auto vertical scroll bar and no horizontal scroll bar */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    /* Enable pointer events so users can click and drag on scrollbars */
+    pointer-events: auto !important;
+}
+
+/* Apply styles that apply directly to slides */
+.slides > section {
+    /* Create flex container to arrange auto-generated elements by Obsidian on each slide */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
