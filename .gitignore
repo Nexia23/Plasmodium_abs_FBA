@@ -102,12 +102,6 @@ ENV/
 
 # PyCharm
 .idea/
-
-# YCM
-para_f.py
-para_f_alg.py
-*.pdf
-
 # Development
 
 testres.txt
@@ -119,3 +113,5 @@ testfile.txt
 /.ipynb_checkpoints
 /CMA_files/noV_cPL_conc/.ipynb_checkpoints
 *.out
+*.pdf
+
