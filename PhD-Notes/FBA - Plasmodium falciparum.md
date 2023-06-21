@@ -15,7 +15,7 @@ Supporting information [here](https://doi.org/10.1371/journal.pcbi.1005397.s001)
 Lots of papers but not cited by others use model from Plata et al. as base. 
 Changes:
 - the biomass composition to include more phospholipids and fatty acids same reference as #Chiappino-Pepe2017
-- dry weight is defined by merozoite weight ~1,0017 pg (no reference) and multiplication rate of merozoite = * 23 
+- dry weight is defined by merozoite weight ~1,0017 pg (no reference) and multiplication rate of merozoite = * 23 thus growth rate over cell cycle is (24 -1)/48 g/h/gDW merozoite
 ## Comparison Table 
 
 |  | ipfal21 | ipfa |
