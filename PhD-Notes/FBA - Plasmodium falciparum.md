@@ -29,3 +29,12 @@ Changes:
 |Reference|higher quality references (KEGG, BiGG, Metnetx,...)| internally high abides community standard, but only KEGG|
 |Compatibility|lower, troublesome exchange reactions, but thus better standard|higher for web-hosted services|
 |==Up-gradable==|Biomass function<br>pseudo lipid, and lipid production|lipid biomass<br>PS-production (PE-PS base exchange no Choline)<br>curate weird PG circle|
+
+## SLIMEr
+#questions dry weight estimation:
+- as of now linear growth of one merozoite to 24 merozoites during the asexual blood stage will be assumed
+- volume based assumption cannot capture the growth, since:
+	- volume grows with a logistic function in S-shape curve
+	- first one merozoite increases its volume to ring at the same time Maurer's clefts are built or exported from the parasitophorous vacuole
+	- the volume swells until around 50 fl at the end of the trophozoite stage also organelles are built and their volume increases
+	- in the schizont stage the volume plateaus but biomass should increase at least for lipids as the merozoites are formed  
