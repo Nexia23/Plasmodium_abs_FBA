@@ -5,5 +5,11 @@
   "readableLineLength": true,
   "spellcheckLanguages": [
     "en-US"
-  ]
+  ],
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
