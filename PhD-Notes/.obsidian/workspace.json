@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
+                "file": "PM Asymmetry Model.md",
                 "mode": "source",
                 "source": false
               }
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "merozoite",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -95,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
+                "file": "PM Asymmetry Model.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
+                "file": "PM Asymmetry Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md"
+                "file": "PM Asymmetry Model.md"
               }
             }
           }
@@ -158,11 +157,11 @@
   },
   "active": "1e472ce9d260e36f",
   "lastOpenFiles": [
+    "FBA - Plasmodium falciparum.md",
     "PhD Chapter-Notes.md",
     "6.6.2023 Oberseminar.md",
     "Untitled.md",
     "PM Asymmetry Model.md",
-    "FBA - Plasmodium falciparum.md",
     "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
     "iPfal-X Model Carey et al..md",
     "ipfa_lipid_prod.md",
