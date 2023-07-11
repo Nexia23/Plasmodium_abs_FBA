@@ -31,10 +31,17 @@ Changes:
 |==Up-gradable==|Biomass function<br>pseudo lipid, and lipid production|lipid biomass<br>PS-production (PE-PS base exchange no Choline)<br>curate weird PG circle|
 
 ## SLIMEr
-#questions dry weight estimation:
+### dry weight estimation: #questions 
 - as of now linear growth of one merozoite to 24 merozoites during the asexual blood stage will be assumed
 - volume based assumption cannot capture the growth, since:
 	- volume grows with a logistic function in S-shape curve
 	- first one merozoite increases its volume to ring at the same time Maurer's clefts are built or exported from the parasitophorous vacuole
 	- the volume swells until around 50 fl at the end of the trophozoite stage also organelles are built and their volume increases
 	- in the schizont stage the volume plateaus but biomass should increase at least for lipids as the merozoites are formed  
+### Stoichiometric values
+#### Side chains:
+- not every phospholipid's side chains are identified, e.g. PC 38:7
+	- to answer this, a permutation function is written, possible entries are for side chains are (14,16,18,20) most abounded probably only to this elongated and for unsaturation (0,1,2,3), same reasoning though side chain unsaturation only know to 1 (find reference #TODO)
+	- the frequency of every possible combination is calculated and multiplied by the molecule abundance times the number of side chains required, 
+		-> since 30mmol PC 38:7 consists of 30mmol PC + 30mmol side chain A + 30mmol side chain B
+	- lipids that cannot be build through a combination of side chains and unsaturation are filtered out and differently considered #TODO 

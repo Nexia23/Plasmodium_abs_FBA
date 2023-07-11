@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PM Asymmetry Model.md",
+                "file": "FBA - Plasmodium falciparum.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PM Asymmetry Model.md",
+                "file": "FBA - Plasmodium falciparum.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PM Asymmetry Model.md",
+                "file": "FBA - Plasmodium falciparum.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "PM Asymmetry Model.md"
+                "file": "FBA - Plasmodium falciparum.md"
               }
             }
           }
@@ -157,11 +157,11 @@
   },
   "active": "1e472ce9d260e36f",
   "lastOpenFiles": [
+    "PM Asymmetry Model.md",
     "FBA - Plasmodium falciparum.md",
     "PhD Chapter-Notes.md",
     "6.6.2023 Oberseminar.md",
     "Untitled.md",
-    "PM Asymmetry Model.md",
     "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
     "iPfal-X Model Carey et al..md",
     "ipfa_lipid_prod.md",
