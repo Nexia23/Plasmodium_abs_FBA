@@ -74,7 +74,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -94,7 +95,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,9 +132,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "FBA - Plasmodium falciparum.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -155,10 +152,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1e472ce9d260e36f",
+  "active": "7382bdfd63e1cd7e",
   "lastOpenFiles": [
-    "PM Asymmetry Model.md",
     "FBA - Plasmodium falciparum.md",
+    "PM Asymmetry Model.md",
     "PhD Chapter-Notes.md",
     "6.6.2023 Oberseminar.md",
     "Untitled.md",

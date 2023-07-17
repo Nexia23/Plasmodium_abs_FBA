@@ -45,3 +45,13 @@ Changes:
 	- the frequency of every possible combination is calculated and multiplied by the molecule abundance times the number of side chains required, 
 		-> since 30mmol PC 38:7 consists of 30mmol PC + 30mmol side chain A + 30mmol side chain B
 	- lipids that cannot be build through a combination of side chains and unsaturation are filtered out and differently considered #TODO 
+### Work on GEMs
+#Chiappino-Pepe2017 no lipid production at all 
+#Carey2017 most reactions are in some way there
+#### What is needed
+- all phospholipids that are missing and their SLIMEr pseudo reactions
+- correct PL build
+	- in the Carey model FA are existent 
+- FA elongation to 20 or 22 #recherche if that is experimentally valid
+- desaturation
+- import of reactions for Pls where reasonable doubt exists as to parasite capability of producing those FA, every unsaturation above 1 #recherche 
