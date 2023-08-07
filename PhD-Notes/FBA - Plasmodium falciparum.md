@@ -33,6 +33,8 @@ Changes:
 ## SLIMEr
 ### dry weight estimation: #questions 
 - as of now linear growth of one merozoite to 24 merozoites during the asexual blood stage will be assumed
+- big unknown is the lipid content in relation to the whole cell dry mass (beside the Forth measurement) making the use of relative data even more dodgy
+
 - volume based assumption cannot capture the growth, since:
 	- volume grows with a logistic function in S-shape curve
 	- first one merozoite increases its volume to ring at the same time Maurer's clefts are built or exported from the parasitophorous vacuole
@@ -40,11 +42,13 @@ Changes:
 	- in the schizont stage the volume plateaus but biomass should increase at least for lipids as the merozoites are formed  
 ### Stoichiometric values
 #### Side chains:
-- not every phospholipid's side chains are identified, e.g. PC 38:7
-	- to answer this, a permutation function is written, possible entries are for side chains are (14,16,18,20) most abounded probably only to this elongated and for unsaturation (0,1,2,3), same reasoning though side chain unsaturation only know to 1 (find reference #TODO)
-	- the frequency of every possible combination is calculated and multiplied by the molecule abundance times the number of side chains required, 
-		-> since 30mmol PC 38:7 consists of 30mmol PC + 30mmol side chain A + 30mmol side chain B
-	- lipids that cannot be build through a combination of side chains and unsaturation are filtered out and differently considered #TODO 
+- not every phospholipid's side chains are identified, e.g. PC 32:0, PC 38:7
+	- to answer this, a permutation function is written, possible entries are for side chains are (14,16,18,20,22) most abounded probably only to this elongated and for unsaturation (0,1), same reasoning though side chain unsaturation only know to 1 (find reference #TODO)
+		- PC 32:0 -> PC 14:0_18:0,  PC 16:0_16:0 
+	- lipids that cannot be build through a allowed combination of side chains and unsaturation are filtered out and considered to be imported from the RBC
+		- PC 38:7
+	- the frequency of every possible combination is calculated and multiplied by the molecule abundance
+	- 
 ### Work on GEMs
 #Chiappino-Pepe2017 no lipid production at all 
 #Carey2017 most reactions are in some way there
