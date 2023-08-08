@@ -10,12 +10,12 @@ Use FBA to analyse lipid metabolic development during the asexual stages. Previo
 Supporting information [here](https://doi.org/10.1371/journal.pcbi.1005397.s001)
 
 #### 2. iPfal17-21 #Carey2017 et al.
-
+Uses Gulati2015 lipid composition data as read from figure 1 time point unknown, values are in mol%
 #### 3. Tewari et al.
 Lots of papers but not cited by others use model from Plata et al. as base. 
 Changes:
 - the biomass composition to include more phospholipids and fatty acids same reference as #Chiappino-Pepe2017
-- dry weight is defined by merozoite weight ~1,0017 pg (no reference) and multiplication rate of merozoite = * 23 thus growth rate over cell cycle is (24 -1)/48 g/h/gDW merozoite
+- dry weight is defined by merozoite weight ~1,0017 pg (no reference) and multiplication rate of merozoite = * 24 thus growth rate over cell cycle is (24 -1)/48 g/h/gDW merozoite
 ## Comparison Table 
 
 |  | ipfal21 | ipfa |
@@ -48,7 +48,10 @@ Changes:
 	- lipids that cannot be build through a allowed combination of side chains and unsaturation are filtered out and considered to be imported from the RBC
 		- PC 38:7
 	- the frequency of every possible combination is calculated and multiplied by the molecule abundance
-	- 
+- two exported files: column 'reaction' gives hint for which reaction in SLIMEr formalism used, also mean values for the three stages saved, here sum of all PC 34:0, e.g. PC (34:0) 14:0_20:0, PC (34:0) 16:0_18:0 match the subtracted mean value of the stage (mean_stage - mean_RBC) of the original data set value
+	1. file: for each lipid produced or imported according to my system
+	2. file: SLIMEr pseudo reactions values and imported lipids for biomass or pseudo reaction 
+
 ### Work on GEMs
 #Chiappino-Pepe2017 no lipid production at all 
 #Carey2017 most reactions are in some way there
