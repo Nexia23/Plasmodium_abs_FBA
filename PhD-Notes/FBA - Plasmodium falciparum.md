@@ -52,6 +52,10 @@ Changes:
 	1. file: for each lipid produced or imported according to my system
 	2. file: SLIMEr pseudo reactions values and imported lipids for biomass or pseudo reaction 
 
+### Biomass
+Nearly all metabolites of iPFA are included four missing since no metabolite found, the combination of both biomass reactions as of now not feasible as stoichiometric factors cannot be translated into another.
+Updated biomass in iPbe has detailed excel file for biomass composition which is basically the same as in iPfa but new metabolites added, like iron. This will be used 
+Info on problem:[[Biomass trouble]]
 ### Work on GEMs
 #Chiappino-Pepe2017 no lipid production at all 
 #Carey2017 most reactions are in some way there
