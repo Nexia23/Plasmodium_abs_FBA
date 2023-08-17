@@ -54,10 +54,16 @@ Changes:
 
 ### Biomass
 Nearly all metabolites of iPFA are included four missing since no metabolite found, the combination of both biomass reactions as of now not feasible as stoichiometric factors cannot be translated into another.
-Updated biomass in iPbe has detailed excel file for biomass composition which is basically the same as in iPfa but new metabolites added, like iron. This will be used 
+Updated biomass in iPbe has detailed excel file for biomass composition which is basically the same as in iPfa but new metabolites added, like iron. This will be used.
+- Ring stage head group: 
+	- 12.2366667 DAG + 75.1733333 PC + 75.8466667 PE + 2.6333333 PG + 2.5233333 PS + 6.9666667 TAG
+- Trophozoite:
+	- 123.9522222 DAG + 167.8877778 FreeChol + 629.7622222 PC + 324.9555556 PE + 32.1066667 PG + 90.9511111 PS + 35.1888889 TAG + 2.46 Cer + 1.0255556 DHSM + 17.4655556 SM'
+- Schizont:
+	- 329.83 DAG + 136.39 FreeChol + 1576.2333333 PC + 607.5966667 PE + 101.1633333 PG + 107.4766667 PS + 174.81 TAG + 1.53 Cer + 2.5 DHSM
 Info on problem:[[Biomass trouble]]
 ### Work on GEMs
-#Chiappino-Pepe2017 no lipid production at all 
+#Chiappino-Pepe2017 no lipid production at all, discussion [[Difference iPfa and own]]
 #Carey2017 most reactions are in some way there
 #### What is needed
 - all phospholipids that are missing and their SLIMEr pseudo reactions
@@ -66,3 +72,8 @@ Info on problem:[[Biomass trouble]]
 - FA elongation to 20 or 22 #recherche if that is experimentally valid
 - desaturation
 - import of reactions for Pls where reasonable doubt exists as to parasite capability of producing those FA, every unsaturation above 1 #recherche 
+## Discussion work
+- Lipids that have a negative value are excluded from biomass in calculation using Alex data set. No clear hint to what is happening to them. This publication [labeled FA ](https://journals.biologists.com/jcs/article/117/8/1469/28271/Developmental-stage-specific-triacylglycerol) could be of interest
+- Why use normal distribution
+	- as from the lipids there is no clear evidence which FA used
+	- looking at the data of [Hsiao](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1149929/?page=7) differences emerge using this other composition as comparison is a must
