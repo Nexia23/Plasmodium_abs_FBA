@@ -2,6 +2,7 @@
 ## Model Description
 Totally new build using FASTA data. The GEM iPfa presents an unbiased bottom-up reconstruction and an updated database of _P_. _falciparum_ metabolism.
 Since steady state assumption no accumulation of hemozoin or Ca²⁺, in turn also means no lipid accumulate.
+![[ipfa_lipid_comp.png]]
 ## Lipid production 
 #ipfa_lipid_prod
 - PC produced by R01321_r (CDP-choline + 1,2-Diacyl-sn-glycerol), ~94% biomass rest into PS
@@ -85,16 +86,6 @@ Digestive vacuole and Golgi apparatus are not compartments reactions occur in cy
 	- calculated by their frequency assuming a distribution proportional to the number of carbons present in their molecular composition
 
 ## Using iPfa to study its metabolism in the blood and liver stages. 
-iPfa can be implemented to study the metabolism of P. falciparum during the blood and liver stages. Here, we suggest some modifications of iPfa that would render better context-specific  
-predictions.  
-For modeling of blood-stage specific metabolism, the protein N6-(lipoyl)lysine in apicoplast  
-(whose metabolite ID in iPfa is C16237_a) should be removed from the biomass. This  
-metabolite is a precursor of the lipoyl-ACP, which is a cofactor of the pyruvate  
-dehydrogenase complex in apicoplast, and its production requires the fatty acid synthesis  
-II (FAS II) pathway in this compartment to be active. This pathway has been  
-experimentally observed as dispensable during the blood stages but essential during the  
-liver stages [61] (S2 Table).  
-For modeling the liver-stage specific metabolism, the uptake of hemoglobin (whose rxn ID  
-in iPfa is T_c_to_e_C05781) should be prohibited and the reaction that represents the  
-hemoglobin digestion (HBDG_c) should be blocked or erased, since this molecule is not  
-supposed to be accessible inside the hepatocyte cell.
+iPfa can be implemented to study the metabolism of P. falciparum during the blood and liver stages. Here, we suggest some modifications of iPfa that would render better context-specific predictions.  
+For modeling of blood-stage specific metabolism, the protein N6-(lipoyl)lysine in apicoplast (whose metabolite ID in iPfa is C16237_a) should be removed from the biomass. This metabolite is a precursor of the lipoyl-ACP, which is a cofactor of the pyruvate dehydrogenase complex in apicoplast, and its production requires the fatty acid synthesis II (FAS II) pathway in this compartment to be active. This pathway has been experimentally observed as dispensable during the blood stages but essential during the liver stages [61] (S2 Table).  
+For modeling the liver-stage specific metabolism, the uptake of hemoglobin (whose rxn ID in iPfa is T_c_to_e_C05781) should be prohibited and the reaction that represents the  hemoglobin digestion (HBDG_c) should be blocked or erased, since this molecule is not supposed to be accessible inside the hepatocyte cell.
