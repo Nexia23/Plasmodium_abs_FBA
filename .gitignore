@@ -115,3 +115,7 @@ testfile.txt
 *.out
 *.pdf
 
+PhD-Notes/.obsidian/app.json
+PhD-Notes/.obsidian/core-plugins-migration.json
+PhD-Notes/.obsidian/core-plugins.json
+PhD-Notes/.obsidian/workspace.json
