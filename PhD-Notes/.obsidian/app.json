@@ -3,9 +3,7 @@
   "showFrontmatter": true,
   "alwaysUpdateLinks": true,
   "readableLineLength": true,
-  "spellcheckLanguages": [
-    "en-US"
-  ],
+  "spellcheckLanguages": null,
   "pdfExportSettings": {
     "pageSize": "A4",
     "landscape": false,
