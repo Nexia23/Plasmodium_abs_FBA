@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "b009e2cf6dd3f81b",
+        "id": "f8b9b6054ac6715f",
         "type": "tabs",
         "children": [
           {
-            "id": "09c55245003c9674",
+            "id": "1bb3632cebc76f08",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lipid Production Model.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5e4347a0ce49d66f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "FBA - Plasmodium falciparum.md",
+                "file": "Kanban/ChapterBan.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -107,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
+                "file": "Kanban/ChapterBan.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md",
+                "file": "Kanban/ChapterBan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "FBA - Plasmodium falciparum.md"
+                "file": "Kanban/ChapterBan.md"
               }
             }
           },
@@ -178,10 +165,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5e4347a0ce49d66f",
+  "active": "1bb3632cebc76f08",
   "lastOpenFiles": [
-    "Lipid Production Model.md",
+    "[.md",
+    "Kanban/ChapterBan.md",
+    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
+    "6.6.2023 Oberseminar.md",
+    "Kanban/ProgramBan.md",
+    "2023-04-14.md",
     "FBA - Plasmodium falciparum.md",
+    "Kanban",
+    "Lipid Production Model.md",
     "Difference iPfal and own.md",
     "2023-09-08.md",
     "Untitled.canvas",
@@ -189,7 +183,6 @@
     "Flo Acyl-CoA.md",
     "PNGS/ipfa_lipid_comp.png",
     "PNGS/lipid_comp_inprecent_inPMsep.png",
-    "iPfa-Model Bioenergetics-based modeling of Plasmodium falciparum metabolism reveals its essential genes, nutritional requirements, and thermodynamic bottlenecks.md",
     "PNGS/Pie_chart_mean_troph.png",
     "PNGS/t_forth_biomass_distribution_pie.png",
     "PNGS/T_forth_biomass_distribution_table.png",
@@ -198,7 +191,6 @@
     "Biomass trouble.md",
     "Thesis questions to answer.md",
     "PM Asymmetry Model.md",
-    "6.6.2023 Oberseminar.md",
     "iPfal-X Model Carey et al..md",
     "ipfa_lipid_prod.md",
     "Arashiki2016 An Unrecognized Function of Cholesterol.md",
@@ -211,7 +203,6 @@
     "().md",
     "RNA_forth_2012.png.md",
     "diff_asym_irbc_rbc_tabel.md",
-    "2023-04-14.md",
     "2023-04-13.md",
     "2023-04-14",
     "Pasted image 20230413172342.png.md",
